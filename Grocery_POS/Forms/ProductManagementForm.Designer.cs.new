@@ -1,0 +1,344 @@
+using Grocery_POS.UI;
+using System.Windows.Forms;
+using System.Drawing;
+using FontAwesome.Sharp;
+
+namespace Grocery_POS.Forms
+{
+    partial class ProductManagementForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            lblTitle = new Label();
+            panelBarcode = new NeoBrutalistPanel();
+            txtBarcode = new NeoBrutalistTextBox();
+            lblBarcode = new Label();
+            iconBarcode = new IconPictureBox();
+
+            panelSearch = new NeoBrutalistPanel();
+            txtSearch = new NeoBrutalistTextBox();
+            lblSearch = new Label();
+
+            panelProducts = new NeoBrutalistPanel();
+            dgvProducts = new DataGridView();
+
+            panelForm = new NeoBrutalistPanel();
+            btnDelete = new NeoBrutalistButton();
+            btnSave = new NeoBrutalistButton();
+            btnNew = new NeoBrutalistButton();
+            txtProductId = new NeoBrutalistTextBox();
+            txtProductName = new NeoBrutalistTextBox();
+            txtPrice = new NeoBrutalistTextBox();
+            txtStock = new NeoBrutalistTextBox();
+            cmbCategory = new ComboBox();
+            lblProductId = new Label();
+            lblProductName = new Label();
+            lblPrice = new Label();
+            lblStock = new Label();
+            lblCategory = new Label();
+
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconBarcode).BeginInit();
+            panelBarcode.SuspendLayout();
+            panelSearch.SuspendLayout();
+            panelProducts.SuspendLayout();
+            panelForm.SuspendLayout();
+            SuspendLayout();
+
+            // lblTitle
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.Black;
+            lblTitle.Location = new Point(20, 20);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(350, 45);
+            lblTitle.Text = "Product Management";
+
+            // panelBarcode
+            panelBarcode.BackColor = Color.White;
+            panelBarcode.BorderColor = Color.Black;
+            panelBarcode.BorderRadius = 0;
+            panelBarcode.BorderSize = 3;
+            panelBarcode.Controls.Add(txtBarcode);
+            panelBarcode.Controls.Add(lblBarcode);
+            panelBarcode.Controls.Add(iconBarcode);
+            panelBarcode.Location = new Point(20, 80);
+            panelBarcode.Size = new Size(944, 60);
+            panelBarcode.Padding = new Padding(10);
+
+            // iconBarcode
+            iconBarcode.BackColor = Color.White;
+            iconBarcode.ForeColor = Color.Black;
+            iconBarcode.IconChar = IconChar.Barcode;
+            iconBarcode.IconSize = 24;
+            iconBarcode.Location = new Point(15, 18);
+            iconBarcode.Size = new Size(24, 24);
+
+            // lblBarcode
+            lblBarcode.AutoSize = true;
+            lblBarcode.Font = new Font("Segoe UI", 10F);
+            lblBarcode.Location = new Point(45, 20);
+            lblBarcode.Text = "Scan Barcode:";
+
+            // txtBarcode
+            txtBarcode.BackColor = Color.White;
+            txtBarcode.BorderColor = Color.Black;
+            txtBarcode.BorderSize = 2;
+            txtBarcode.Font = new Font("Segoe UI", 10F);
+            txtBarcode.Location = new Point(150, 15);
+            txtBarcode.Size = new Size(770, 30);
+
+            // panelSearch
+            panelSearch.BackColor = Color.White;
+            panelSearch.BorderColor = Color.Black;
+            panelSearch.BorderRadius = 0;
+            panelSearch.BorderSize = 3;
+            panelSearch.Controls.Add(txtSearch);
+            panelSearch.Controls.Add(lblSearch);
+            panelSearch.Location = new Point(20, 150);
+            panelSearch.Size = new Size(944, 60);
+            panelSearch.Padding = new Padding(10);
+
+            // lblSearch
+            lblSearch.AutoSize = true;
+            lblSearch.Font = new Font("Segoe UI", 10F);
+            lblSearch.Location = new Point(15, 20);
+            lblSearch.Text = "Search Products:";
+
+            // txtSearch
+            txtSearch.BackColor = Color.White;
+            txtSearch.BorderColor = Color.Black;
+            txtSearch.BorderSize = 2;
+            txtSearch.Font = new Font("Segoe UI", 10F);
+            txtSearch.Location = new Point(150, 15);
+            txtSearch.Size = new Size(770, 30);
+
+            // panelProducts
+            panelProducts.BackColor = Color.White;
+            panelProducts.BorderColor = Color.Black;
+            panelProducts.BorderRadius = 0;
+            panelProducts.BorderSize = 3;
+            panelProducts.Controls.Add(dgvProducts);
+            panelProducts.Location = new Point(20, 220);
+            panelProducts.Size = new Size(944, 300);
+            panelProducts.Padding = new Padding(10);
+
+            // dgvProducts
+            dgvProducts.AllowUserToAddRows = false;
+            dgvProducts.AllowUserToDeleteRows = false;
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProducts.BackgroundColor = Color.White;
+            dgvProducts.BorderStyle = BorderStyle.None;
+            dgvProducts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 204, 0);
+            dgvProducts.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvProducts.ColumnHeadersHeight = 40;
+            dgvProducts.DefaultCellStyle.Font = new Font("Segoe UI", 10F);
+            dgvProducts.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 204, 0);
+            dgvProducts.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvProducts.Dock = DockStyle.Fill;
+            dgvProducts.Location = new Point(10, 10);
+            dgvProducts.ReadOnly = true;
+            dgvProducts.RowHeadersVisible = false;
+            dgvProducts.RowTemplate.Height = 30;
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // panelForm
+            panelForm.BackColor = Color.White;
+            panelForm.BorderColor = Color.Black;
+            panelForm.BorderRadius = 0;
+            panelForm.BorderSize = 3;
+            panelForm.Controls.Add(btnDelete);
+            panelForm.Controls.Add(btnSave);
+            panelForm.Controls.Add(btnNew);
+            panelForm.Controls.Add(txtProductId);
+            panelForm.Controls.Add(txtProductName);
+            panelForm.Controls.Add(txtPrice);
+            panelForm.Controls.Add(txtStock);
+            panelForm.Controls.Add(cmbCategory);
+            panelForm.Controls.Add(lblProductId);
+            panelForm.Controls.Add(lblProductName);
+            panelForm.Controls.Add(lblPrice);
+            panelForm.Controls.Add(lblStock);
+            panelForm.Controls.Add(lblCategory);
+            panelForm.Location = new Point(20, 530);
+            panelForm.Size = new Size(944, 110);
+            panelForm.Padding = new Padding(10);
+
+            // Form labels
+            lblProductId.AutoSize = true;
+            lblProductId.Font = new Font("Segoe UI", 10F);
+            lblProductId.Location = new Point(15, 25);
+            lblProductId.Text = "Product ID:";
+
+            lblProductName.AutoSize = true;
+            lblProductName.Font = new Font("Segoe UI", 10F);
+            lblProductName.Location = new Point(250, 25);
+            lblProductName.Text = "Product Name:";
+
+            lblPrice.AutoSize = true;
+            lblPrice.Font = new Font("Segoe UI", 10F);
+            lblPrice.Location = new Point(15, 65);
+            lblPrice.Text = "Price:";
+
+            lblStock.AutoSize = true;
+            lblStock.Font = new Font("Segoe UI", 10F);
+            lblStock.Location = new Point(250, 65);
+            lblStock.Text = "Stock:";
+
+            lblCategory.AutoSize = true;
+            lblCategory.Font = new Font("Segoe UI", 10F);
+            lblCategory.Location = new Point(485, 25);
+            lblCategory.Text = "Category:";
+
+            // Form inputs
+            txtProductId.BackColor = Color.White;
+            txtProductId.BorderColor = Color.Black;
+            txtProductId.BorderSize = 2;
+            txtProductId.Font = new Font("Segoe UI", 10F);
+            txtProductId.Location = new Point(100, 20);
+            txtProductId.Size = new Size(120, 30);
+            txtProductId.ReadOnly = true;
+
+            txtProductName.BackColor = Color.White;
+            txtProductName.BorderColor = Color.Black;
+            txtProductName.BorderSize = 2;
+            txtProductName.Font = new Font("Segoe UI", 10F);
+            txtProductName.Location = new Point(350, 20);
+            txtProductName.Size = new Size(120, 30);
+
+            txtPrice.BackColor = Color.White;
+            txtPrice.BorderColor = Color.Black;
+            txtPrice.BorderSize = 2;
+            txtPrice.Font = new Font("Segoe UI", 10F);
+            txtPrice.Location = new Point(100, 60);
+            txtPrice.Size = new Size(120, 30);
+
+            txtStock.BackColor = Color.White;
+            txtStock.BorderColor = Color.Black;
+            txtStock.BorderSize = 2;
+            txtStock.Font = new Font("Segoe UI", 10F);
+            txtStock.Location = new Point(350, 60);
+            txtStock.Size = new Size(120, 30);
+
+            cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCategory.Font = new Font("Segoe UI", 10F);
+            cmbCategory.Location = new Point(560, 20);
+            cmbCategory.Size = new Size(150, 30);
+
+            // Buttons
+            btnNew.BackColor = Color.FromArgb(0, 122, 204);
+            btnNew.BorderColor = Color.Black;
+            btnNew.BorderSize = 2;
+            btnNew.FlatAppearance.BorderSize = 0;
+            btnNew.FlatStyle = FlatStyle.Flat;
+            btnNew.Font = new Font("Segoe UI", 10F);
+            btnNew.ForeColor = Color.White;
+            btnNew.Location = new Point(730, 20);
+            btnNew.Size = new Size(60, 35);
+            btnNew.Text = "New";
+
+            btnSave.BackColor = Color.FromArgb(0, 192, 0);
+            btnSave.BorderColor = Color.Black;
+            btnSave.BorderSize = 2;
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Segoe UI", 10F);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(800, 20);
+            btnSave.Size = new Size(60, 35);
+            btnSave.Text = "Save";
+
+            btnDelete.BackColor = Color.Red;
+            btnDelete.BorderColor = Color.Black;
+            btnDelete.BorderSize = 2;
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Segoe UI", 10F);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(870, 20);
+            btnDelete.Size = new Size(60, 35);
+            btnDelete.Text = "Delete";
+
+            // ProductManagementForm
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 204, 0);
+            ClientSize = new Size(984, 661);
+            Controls.Add(lblTitle);
+            Controls.Add(panelBarcode);
+            Controls.Add(panelSearch);
+            Controls.Add(panelProducts);
+            Controls.Add(panelForm);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "ProductManagementForm";
+            Padding = new Padding(20);
+            Dock = DockStyle.Fill;
+            TopLevel = false;
+
+            ((System.ComponentModel.ISupportInitialize)dgvProducts).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconBarcode).EndInit();
+            panelBarcode.ResumeLayout(false);
+            panelBarcode.PerformLayout();
+            panelSearch.ResumeLayout(false);
+            panelSearch.PerformLayout();
+            panelProducts.ResumeLayout(false);
+            panelForm.ResumeLayout(false);
+            panelForm.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Label lblTitle;
+        private NeoBrutalistPanel panelBarcode;
+        private NeoBrutalistTextBox txtBarcode;
+        private Label lblBarcode;
+        private IconPictureBox iconBarcode;
+        private NeoBrutalistPanel panelSearch;
+        private NeoBrutalistTextBox txtSearch;
+        private Label lblSearch;
+        private NeoBrutalistPanel panelProducts;
+        private DataGridView dgvProducts;
+        private NeoBrutalistPanel panelForm;
+        private NeoBrutalistButton btnDelete;
+        private NeoBrutalistButton btnSave;
+        private NeoBrutalistButton btnNew;
+        private NeoBrutalistTextBox txtProductId;
+        private Label lblProductId;
+        private NeoBrutalistTextBox txtProductName;
+        private NeoBrutalistTextBox txtPrice;
+        private NeoBrutalistTextBox txtStock;
+        private ComboBox cmbCategory;
+        private Label lblProductName;
+        private Label lblPrice;
+        private Label lblStock;
+        private Label lblCategory;
+    }
+}

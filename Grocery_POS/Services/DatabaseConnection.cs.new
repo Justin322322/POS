@@ -1,0 +1,275 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+
+namespace Grocery_POS.Services
+{
+    public class DatabaseConnection
+    {
+        // Default connection string - adjust as needed for your MySQL setup
+        private static string connectionString = "Server=localhost;Database=grocery_pos;Uid=root;Pwd=;Port=3306;SslMode=none;AllowPublicKeyRetrieval=true;";
+        private static DatabaseConnection? instance;
+
+        private DatabaseConnection() { }
+
+        public static DatabaseConnection Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DatabaseConnection();
+                }
+                return instance;
+            }
+        }
+
+        public MySqlConnection GetConnection()
+        {
+            return new MySqlConnection(connectionString);
+        }
+
+        public void SetConnectionString(string server, string database, string uid, string password)
+        {
+            connectionString = $"Server={server};Database={database};Uid={uid};Pwd={password};";
+        }
+
+        // Method to initialize the database and tables if they don't exist
+        public bool InitializeDatabase()
+        {
+            try
+            {
+                using (MySqlConnection conn = GetConnection())
+                {
+                    // Test connection first
+                    try
+                    {
+                        conn.Open();
+                        Console.WriteLine("MySQL connection successful!");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine($"MySQL Connection Error: {ex.Message}");
+                        return false;
+                    }
+
+                    // Create database if it doesn't exist
+                    string createDbQuery = "CREATE DATABASE IF NOT EXISTS grocery_pos;";
+                    using (MySqlCommand cmd = new MySqlCommand(createDbQuery, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Use the database
+                    string useDbQuery = "USE grocery_pos;";
+                    using (MySqlCommand cmd = new MySqlCommand(useDbQuery, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Create users table if it doesn't exist
+                    string createUsersTableQuery = @"
+                        CREATE TABLE IF NOT EXISTS users (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            username VARCHAR(50) NOT NULL UNIQUE,
+                            password VARCHAR(255) NOT NULL,
+                            full_name VARCHAR(100) NOT NULL,
+                            role VARCHAR(20) NOT NULL,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        );";
+                    using (MySqlCommand cmd = new MySqlCommand(createUsersTableQuery, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Create categories table if it doesn't exist
+                    string createCategoriesTableQuery = @"
+                        CREATE TABLE IF NOT EXISTS categories (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            name VARCHAR(100) NOT NULL UNIQUE,
+                            description TEXT,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        );";
+                    using (MySqlCommand cmd = new MySqlCommand(createCategoriesTableQuery, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Create products table if it doesn't exist
+                    string createProductsTableQuery = @"
+                        CREATE TABLE IF NOT EXISTS products (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            name VARCHAR(100) NOT NULL,
+                            category_id INT NOT NULL,
+                            price DECIMAL(10,2) NOT NULL,
+                            stock INT NOT NULL DEFAULT 0,
+                            barcode VARCHAR(50),
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            FOREIGN KEY (category_id) REFERENCES categories(id)
+                        );";
+                    using (MySqlCommand cmd = new MySqlCommand(createProductsTableQuery, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Create transactions table if it doesn't exist
+                    string createTransactionsTableQuery = @"
+                        CREATE TABLE IF NOT EXISTS transactions (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            user_id INT NOT NULL,
+                            total_amount DECIMAL(10,2) NOT NULL,
+                            payment_method VARCHAR(20) NOT NULL,
+                            payment_amount DECIMAL(10,2) NOT NULL,
+                            change_amount DECIMAL(10,2) NOT NULL,
+                            transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            FOREIGN KEY (user_id) REFERENCES users(id)
+                        );";
+                    using (MySqlCommand cmd = new MySqlCommand(createTransactionsTableQuery, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Create transaction_items table if it doesn't exist
+                    string createTransactionItemsTableQuery = @"
+                        CREATE TABLE IF NOT EXISTS transaction_items (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            transaction_id INT NOT NULL,
+                            product_id INT NOT NULL,
+                            quantity INT NOT NULL,
+                            price DECIMAL(10,2) NOT NULL,
+                            subtotal DECIMAL(10,2) NOT NULL,
+                            FOREIGN KEY (transaction_id) REFERENCES transactions(id),
+                            FOREIGN KEY (product_id) REFERENCES products(id)
+                        );";
+                    using (MySqlCommand cmd = new MySqlCommand(createTransactionItemsTableQuery, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Insert default admin user if not exists
+                    string insertDefaultUser = @"
+                        INSERT INTO users (username, password, full_name, role)
+                        SELECT 'admin', 'admin123', 'Administrator', 'Admin'
+                        WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin');";
+                    using (MySqlCommand cmd = new MySqlCommand(insertDefaultUser, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Insert default categories if not exists
+                    string insertDefaultCategories = @"
+                        INSERT INTO categories (name, description)
+                        SELECT 'Beverages', 'Drinks and liquids for consumption'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Beverages');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Bakery', 'Bread, pastries, and baked goods'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Bakery');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Canned Goods', 'Preserved food in cans or jars'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Canned Goods');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Dairy', 'Milk, cheese, and other dairy products'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Dairy');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Dry/Baking Goods', 'Flour, sugar, cereal, and baking items'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Dry/Baking Goods');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Frozen Foods', 'Frozen meals, vegetables, and desserts'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Frozen Foods');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Meat', 'Beef, pork, poultry, and seafood'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Meat');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Produce', 'Fruits and vegetables'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Produce');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Cleaners', 'Household cleaning products'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Cleaners');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Paper Goods', 'Paper towels, toilet paper, etc.'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Paper Goods');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Personal Care', 'Soap, shampoo, toothpaste, etc.'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Personal Care');
+                        
+                        INSERT INTO categories (name, description)
+                        SELECT 'Other', 'Miscellaneous items'
+                        WHERE NOT EXISTS (SELECT 1 FROM categories WHERE name = 'Other');";
+                    using (MySqlCommand cmd = new MySqlCommand(insertDefaultCategories, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Insert sample products if not exists
+                    string insertSampleProducts = @"
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Milk 1L', (SELECT id FROM categories WHERE name = 'Dairy'), 2.99, 50, '123456789'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Milk 1L');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'White Bread', (SELECT id FROM categories WHERE name = 'Bakery'), 1.99, 30, '234567890'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'White Bread');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Eggs (12pk)', (SELECT id FROM categories WHERE name = 'Dairy'), 3.49, 40, '345678901'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Eggs (12pk)');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Coca Cola 2L', (SELECT id FROM categories WHERE name = 'Beverages'), 2.49, 60, '456789012'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Coca Cola 2L');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Chicken Breast 1kg', (SELECT id FROM categories WHERE name = 'Meat'), 8.99, 25, '567890123'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Chicken Breast 1kg');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Bananas 1kg', (SELECT id FROM categories WHERE name = 'Produce'), 1.99, 100, '678901234'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Bananas 1kg');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Toilet Paper 12pk', (SELECT id FROM categories WHERE name = 'Paper Goods'), 9.99, 30, '789012345'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Toilet Paper 12pk');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Dish Soap', (SELECT id FROM categories WHERE name = 'Cleaners'), 3.49, 45, '890123456'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Dish Soap');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Canned Tuna', (SELECT id FROM categories WHERE name = 'Canned Goods'), 1.79, 80, '901234567'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Canned Tuna');
+                        
+                        INSERT INTO products (name, category_id, price, stock, barcode)
+                        SELECT 'Rice 5kg', (SELECT id FROM categories WHERE name = 'Dry/Baking Goods'), 12.99, 20, '012345678'
+                        WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Rice 5kg');";
+                    using (MySqlCommand cmd = new MySqlCommand(insertSampleProducts, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error initializing database: {ex.Message}");
+                return false;
+            }
+        }
+    }
+}
