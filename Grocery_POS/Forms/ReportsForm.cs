@@ -33,6 +33,24 @@ namespace Grocery_POS.Forms
                 dtpStartDate.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
                 dtpEndDate.Value = DateTime.Now;
 
+                // Ensure chart is initialized
+                if (chartSales == null)
+                {
+                    // Create the chart control if it doesn't exist
+                    chartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
+                    chartSales.Location = new Point(15, 50);
+                    chartSales.Name = "chartSales";
+                    chartSales.Size = new Size(1006, 145);
+                    chartSales.TabIndex = 1;
+                    chartSales.Text = "Sales Chart";
+
+                    // Add the chart to the panel
+                    if (panelChart != null)
+                    {
+                        panelChart.Controls.Add(chartSales);
+                    }
+                }
+
                 // Load reports
                 LoadReports();
             }
@@ -46,6 +64,59 @@ namespace Grocery_POS.Forms
         {
             try
             {
+                // Check if chart control is available
+                if (chartSales == null)
+                {
+                    // Create the chart control if it doesn't exist
+                    chartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
+                    chartSales.Location = new Point(15, 50);
+                    chartSales.Name = "chartSales";
+                    chartSales.Size = new Size(1006, 145);
+                    chartSales.TabIndex = 1;
+                    chartSales.Text = "Sales Chart";
+
+                    // Add the chart to the panel
+                    if (panelChart != null)
+                    {
+                        panelChart.Controls.Add(chartSales);
+                    }
+                }
+
+                // Initialize chart series and areas
+                try
+                {
+                    // Create a new series if needed
+                    if (chartSales.Series.Count == 0)
+                    {
+                        // Create a new series
+                        var series = new System.Windows.Forms.DataVisualization.Charting.Series
+                        {
+                            Name = "Sales",
+                            ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column,
+                            IsVisibleInLegend = true,
+                            Color = System.Drawing.Color.FromArgb(0, 122, 204)
+                        };
+
+                        // Add the series to the chart
+                        chartSales.Series.Add(series);
+
+                        // Set chart appearance
+                        if (chartSales.ChartAreas.Count == 0)
+                        {
+                            chartSales.ChartAreas.Add(new System.Windows.Forms.DataVisualization.Charting.ChartArea("Default"));
+                        }
+
+                        if (chartSales.Legends.Count == 0)
+                        {
+                            chartSales.Legends.Add(new System.Windows.Forms.DataVisualization.Charting.Legend("Default"));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error initializing chart: {ex.Message}", "Chart Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
                 DateTime startDate = dtpStartDate.Value.Date;
                 DateTime endDate = dtpEndDate.Value.Date.AddDays(1).AddSeconds(-1); // End of the day
 
@@ -109,9 +180,10 @@ namespace Grocery_POS.Forms
                         .OrderBy(d => d.Date)
                         .ToList();
 
-                    // Clear chart
-                    if (chartSales.Series.Count > 0)
+                    // Update chart if it's properly initialized
+                    if (chartSales != null && chartSales.Series.Count > 0 && chartSales.Series["Sales"] != null)
                     {
+                        // Clear chart
                         chartSales.Series["Sales"].Points.Clear();
 
                         // Add data to chart
@@ -122,12 +194,13 @@ namespace Grocery_POS.Forms
                     }
                     else
                     {
-                        MessageBox.Show("Chart component not available. This feature requires the Windows Forms DataVisualization package.", "Chart Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        // Just log the issue without showing a message box to avoid overwhelming the user
+                        System.Diagnostics.Debug.WriteLine("Chart not properly initialized for data loading");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error loading chart: {ex.Message}", "Chart Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"Error loading chart data: {ex.Message}", "Chart Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)

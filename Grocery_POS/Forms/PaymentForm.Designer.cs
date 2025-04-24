@@ -59,9 +59,9 @@ namespace Grocery_POS.Forms
             lblChange = new Label();
             panelQuickButtons = new NeoBrutalistPanel();
             btnExact = new NeoBrutalistButton();
-            btnQuick100 = new NeoBrutalistButton();
             btnQuick500 = new NeoBrutalistButton();
             btnQuick1000 = new NeoBrutalistButton();
+            btnQuick100 = new NeoBrutalistButton();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panelAmountPaid.SuspendLayout();
@@ -121,34 +121,35 @@ namespace Grocery_POS.Forms
             panel2.Controls.Add(rbCard);
             panel2.Controls.Add(rbCash);
             panel2.Controls.Add(label7);
-            panel2.Location = new Point(67, 164);
+            panel2.Location = new Point(89, 164);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(15);
             panel2.ShadowColor = Color.DarkGray;
-            panel2.Size = new Size(372, 60);
+            panel2.Size = new Size(328, 60);
             panel2.TabIndex = 7;
             // 
             // rbCard
             // 
             rbCard.AutoSize = true;
+            rbCard.BackColor = Color.DarkGray;
             rbCard.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            rbCard.ForeColor = Color.FromArgb(255, 204, 0);
-            rbCard.Location = new Point(296, 16);
+            rbCard.ForeColor = Color.Black;
+            rbCard.Location = new Point(250, 16);
             rbCard.Name = "rbCard";
             rbCard.Size = new Size(63, 25);
             rbCard.TabIndex = 2;
             rbCard.Text = "Card";
-            rbCard.UseVisualStyleBackColor = true;
+            rbCard.UseVisualStyleBackColor = false;
             rbCard.CheckedChanged += rbCard_CheckedChanged;
             // 
             // rbCash
             // 
             rbCash.AutoSize = true;
-            rbCash.BackColor = Color.Black;
+            rbCash.BackColor = Color.DarkGray;
             rbCash.Checked = true;
             rbCash.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            rbCash.ForeColor = Color.FromArgb(255, 204, 0);
-            rbCash.Location = new Point(226, 16);
+            rbCash.ForeColor = Color.Black;
+            rbCash.Location = new Point(180, 16);
             rbCash.Name = "rbCash";
             rbCash.Size = new Size(64, 25);
             rbCash.TabIndex = 1;
@@ -160,8 +161,9 @@ namespace Grocery_POS.Forms
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = Color.DarkGray;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label7.ForeColor = Color.FromArgb(255, 204, 0);
+            label7.ForeColor = Color.Black;
             label7.Location = new Point(15, 20);
             label7.Name = "label7";
             label7.Size = new Size(146, 21);
@@ -289,10 +291,10 @@ namespace Grocery_POS.Forms
             panelQuickButtons.BackColor = Color.Black;
             panelQuickButtons.BorderColor = Color.Black;
             panelQuickButtons.Controls.Add(btnExact);
-            panelQuickButtons.Controls.Add(btnQuick100);
             panelQuickButtons.Controls.Add(btnQuick500);
             panelQuickButtons.Controls.Add(btnQuick1000);
-            panelQuickButtons.Location = new Point(20, 376);
+            panelQuickButtons.Controls.Add(btnQuick100);
+            panelQuickButtons.Location = new Point(17, 388);
             panelQuickButtons.Name = "panelQuickButtons";
             panelQuickButtons.Padding = new Padding(10);
             panelQuickButtons.ShadowColor = Color.Black;
@@ -320,27 +322,6 @@ namespace Grocery_POS.Forms
             btnExact.Text = "EXACT";
             btnExact.UseVisualStyleBackColor = false;
             btnExact.Click += btnExact_Click;
-            // 
-            // btnQuick100
-            // 
-            btnQuick100.BackColor = Color.FromArgb(255, 204, 0);
-            btnQuick100.BorderColor = Color.Black;
-            btnQuick100.FlatAppearance.BorderSize = 0;
-            btnQuick100.FlatStyle = FlatStyle.Flat;
-            btnQuick100.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnQuick100.ForeColor = Color.Black;
-            btnQuick100.HoverBorderColor = Color.Black;
-            btnQuick100.Location = new Point(235, 10);
-            btnQuick100.Name = "btnQuick100";
-            btnQuick100.OffsetX = 3;
-            btnQuick100.OffsetY = 3;
-            btnQuick100.Padding = new Padding(0, 0, 3, 3);
-            btnQuick100.ShadowColor = Color.FromArgb(128, 128, 128);
-            btnQuick100.Size = new Size(215, 30);
-            btnQuick100.TabIndex = 11;
-            btnQuick100.Text = "+₱100";
-            btnQuick100.UseVisualStyleBackColor = false;
-            btnQuick100.Click += btnQuick100_Click;
             // 
             // btnQuick500
             // 
@@ -384,16 +365,37 @@ namespace Grocery_POS.Forms
             btnQuick1000.UseVisualStyleBackColor = false;
             btnQuick1000.Click += btnQuick1000_Click;
             // 
+            // btnQuick100
+            // 
+            btnQuick100.BackColor = Color.FromArgb(255, 204, 0);
+            btnQuick100.BorderColor = Color.Black;
+            btnQuick100.FlatAppearance.BorderSize = 0;
+            btnQuick100.FlatStyle = FlatStyle.Flat;
+            btnQuick100.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnQuick100.ForeColor = Color.Black;
+            btnQuick100.HoverBorderColor = Color.Black;
+            btnQuick100.Location = new Point(235, 10);
+            btnQuick100.Name = "btnQuick100";
+            btnQuick100.OffsetX = 3;
+            btnQuick100.OffsetY = 3;
+            btnQuick100.Padding = new Padding(0, 0, 3, 3);
+            btnQuick100.ShadowColor = Color.FromArgb(128, 128, 128);
+            btnQuick100.Size = new Size(215, 30);
+            btnQuick100.TabIndex = 11;
+            btnQuick100.Text = "+₱100";
+            btnQuick100.UseVisualStyleBackColor = false;
+            btnQuick100.Click += btnQuick100_Click;
+            // 
             // PaymentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 204, 0);
             ClientSize = new Size(500, 600);
+            Controls.Add(panelQuickButtons);
             Controls.Add(label8);
             Controls.Add(btnCancel);
             Controls.Add(btnConfirm);
-            Controls.Add(panelQuickButtons);
             Controls.Add(panelAmountPaid);
             Controls.Add(panel2);
             Controls.Add(lblTotalAmount);

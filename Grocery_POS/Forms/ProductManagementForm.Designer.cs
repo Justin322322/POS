@@ -33,8 +33,8 @@ namespace Grocery_POS.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             lblTitle = new Label();
             panelBarcode = new NeoBrutalistPanel();
             txtBarcode = new NeoBrutalistTextBox();
@@ -110,8 +110,10 @@ namespace Grocery_POS.Forms
             // lblBarcode
             // 
             lblBarcode.AutoSize = true;
+            lblBarcode.BackColor = Color.Black;
             lblBarcode.Font = new Font("Segoe UI", 10F);
-            lblBarcode.Location = new Point(45, 20);
+            lblBarcode.ForeColor = Color.Yellow;
+            lblBarcode.Location = new Point(50, 23);
             lblBarcode.Name = "lblBarcode";
             lblBarcode.Size = new Size(93, 19);
             lblBarcode.TabIndex = 1;
@@ -162,8 +164,10 @@ namespace Grocery_POS.Forms
             // lblSearch
             // 
             lblSearch.AutoSize = true;
+            lblSearch.BackColor = Color.Black;
             lblSearch.Font = new Font("Segoe UI", 10F);
-            lblSearch.Location = new Point(15, 20);
+            lblSearch.ForeColor = Color.Yellow;
+            lblSearch.Location = new Point(34, 23);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(110, 19);
             lblSearch.TabIndex = 1;
@@ -190,23 +194,23 @@ namespace Grocery_POS.Forms
             dgvProducts.BorderStyle = BorderStyle.None;
             dgvProducts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 204, 0);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(255, 204, 0);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvProducts.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(255, 204, 0);
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvProducts.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(255, 204, 0);
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvProducts.DefaultCellStyle = dataGridViewCellStyle8;
             dgvProducts.Dock = DockStyle.Fill;
             dgvProducts.Location = new Point(10, 10);
             dgvProducts.Name = "dgvProducts";
@@ -378,9 +382,9 @@ namespace Grocery_POS.Forms
             // lblProductId
             // 
             lblProductId.AutoSize = true;
-            lblProductId.BackColor = Color.White;
+            lblProductId.BackColor = Color.Black;
             lblProductId.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblProductId.ForeColor = Color.Black;
+            lblProductId.ForeColor = Color.Yellow;
             lblProductId.Location = new Point(20, 30);
             lblProductId.Name = "lblProductId";
             lblProductId.Size = new Size(88, 20);
@@ -390,9 +394,9 @@ namespace Grocery_POS.Forms
             // lblProductName
             // 
             lblProductName.AutoSize = true;
-            lblProductName.BackColor = Color.White;
+            lblProductName.BackColor = Color.Black;
             lblProductName.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblProductName.ForeColor = Color.Black;
+            lblProductName.ForeColor = Color.Yellow;
             lblProductName.Location = new Point(20, 121);
             lblProductName.Name = "lblProductName";
             lblProductName.Size = new Size(114, 20);
@@ -402,9 +406,9 @@ namespace Grocery_POS.Forms
             // lblPrice
             // 
             lblPrice.AutoSize = true;
-            lblPrice.BackColor = Color.White;
+            lblPrice.BackColor = Color.Black;
             lblPrice.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblPrice.ForeColor = Color.Black;
+            lblPrice.ForeColor = Color.Yellow;
             lblPrice.Location = new Point(342, 78);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(47, 20);
@@ -414,9 +418,9 @@ namespace Grocery_POS.Forms
             // lblStock
             // 
             lblStock.AutoSize = true;
-            lblStock.BackColor = Color.White;
+            lblStock.BackColor = Color.Black;
             lblStock.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblStock.ForeColor = Color.Black;
+            lblStock.ForeColor = Color.Yellow;
             lblStock.Location = new Point(342, 30);
             lblStock.Name = "lblStock";
             lblStock.Size = new Size(52, 20);
@@ -426,9 +430,9 @@ namespace Grocery_POS.Forms
             // lblCategory
             // 
             lblCategory.AutoSize = true;
-            lblCategory.BackColor = Color.White;
+            lblCategory.BackColor = Color.Black;
             lblCategory.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblCategory.ForeColor = Color.Black;
+            lblCategory.ForeColor = Color.Yellow;
             lblCategory.Location = new Point(20, 83);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(77, 20);

@@ -31,14 +31,14 @@ namespace Grocery_POS.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panelProducts = new NeoBrutalistPanel();
             btnCategoryManagement = new NeoBrutalistButton();
-            btnAddToCart = new NeoBrutalistButton();
             dgvProducts = new DataGridView();
             label1 = new Label();
             txtSearch = new NeoBrutalistTextBox();
+            btnAddToCart = new NeoBrutalistButton();
             panelCart = new NeoBrutalistPanel();
             btnPay = new NeoBrutalistButton();
             btnClearCart = new NeoBrutalistButton();
@@ -95,6 +95,57 @@ namespace Grocery_POS.Forms
             btnCategoryManagement.Text = "CATEGORY MANAGEMENT";
             btnCategoryManagement.UseVisualStyleBackColor = false;
             // 
+            // dgvProducts
+            // 
+            dgvProducts.AllowUserToAddRows = false;
+            dgvProducts.AllowUserToDeleteRows = false;
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProducts.BackgroundColor = Color.White;
+            dgvProducts.BorderStyle = BorderStyle.None;
+            dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProducts.Location = new Point(15, 106);
+            dgvProducts.Name = "dgvProducts";
+            dgvProducts.ReadOnly = true;
+            dgvProducts.RowHeadersVisible = false;
+            dgvProducts.RowTemplate.DefaultCellStyle.BackColor = Color.White;
+            dgvProducts.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
+            dgvProducts.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 204, 0);
+            dgvProducts.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProducts.Size = new Size(581, 319);
+            dgvProducts.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Black;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label1.ForeColor = Color.Yellow;
+            label1.Location = new Point(15, 41);
+            label1.Name = "label1";
+            label1.Size = new Size(156, 25);
+            label1.TabIndex = 1;
+            label1.Text = "Search Products";
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = Color.White;
+            txtSearch.BorderColor = Color.Black;
+            txtSearch.BorderFocusColor = Color.FromArgb(255, 128, 0);
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Font = new Font("Segoe UI", 12F);
+            txtSearch.ForeColor = Color.Black;
+            txtSearch.Location = new Point(177, 28);
+            txtSearch.MinimumSize = new Size(0, 50);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderColor = Color.DarkGray;
+            txtSearch.PlaceholderText = "Search by name or barcode...";
+            txtSearch.Size = new Size(419, 50);
+            txtSearch.TabIndex = 0;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
             // btnAddToCart
             // 
             btnAddToCart.BackColor = Color.White;
@@ -113,55 +164,6 @@ namespace Grocery_POS.Forms
             btnAddToCart.Text = "ADD TO CART";
             btnAddToCart.UseVisualStyleBackColor = false;
             btnAddToCart.Click += btnAddToCart_Click;
-            // 
-            // dgvProducts
-            // 
-            dgvProducts.AllowUserToAddRows = false;
-            dgvProducts.AllowUserToDeleteRows = false;
-            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProducts.BackgroundColor = Color.White;
-            dgvProducts.BorderStyle = BorderStyle.None;
-            dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Location = new Point(15, 100);
-            dgvProducts.Name = "dgvProducts";
-            dgvProducts.ReadOnly = true;
-            dgvProducts.RowHeadersVisible = false;
-            dgvProducts.RowTemplate.DefaultCellStyle.BackColor = Color.White;
-            dgvProducts.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dgvProducts.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 204, 0);
-            dgvProducts.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProducts.Size = new Size(581, 325);
-            dgvProducts.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label1.Location = new Point(15, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(156, 25);
-            label1.TabIndex = 1;
-            label1.Text = "Search Products";
-            // 
-            // txtSearch
-            // 
-            txtSearch.BackColor = Color.White;
-            txtSearch.BorderColor = Color.Black;
-            txtSearch.BorderFocusColor = Color.FromArgb(255, 128, 0);
-            txtSearch.BorderStyle = BorderStyle.None;
-            txtSearch.Font = new Font("Segoe UI", 12F);
-            txtSearch.ForeColor = Color.Black;
-            txtSearch.Location = new Point(15, 50);
-            txtSearch.MinimumSize = new Size(0, 50);
-            txtSearch.Name = "txtSearch";
-            txtSearch.PlaceholderColor = Color.DarkGray;
-            txtSearch.PlaceholderText = "Search by name or barcode...";
-            txtSearch.Size = new Size(581, 50);
-            txtSearch.TabIndex = 0;
-            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // panelCart
             // 
@@ -247,7 +249,9 @@ namespace Grocery_POS.Forms
             // lblTotal
             // 
             lblTotal.AutoSize = true;
+            lblTotal.BackColor = Color.Black;
             lblTotal.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTotal.ForeColor = Color.Yellow;
             lblTotal.Location = new Point(188, 429);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(77, 32);
@@ -257,7 +261,9 @@ namespace Grocery_POS.Forms
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Black;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label3.ForeColor = Color.Yellow;
             label3.Location = new Point(15, 435);
             label3.Name = "label3";
             label3.Size = new Size(158, 25);
@@ -272,7 +278,7 @@ namespace Grocery_POS.Forms
             dgvCart.BackgroundColor = Color.White;
             dgvCart.BorderStyle = BorderStyle.None;
             dgvCart.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCart.Location = new Point(15, 50);
             dgvCart.Name = "dgvCart";
@@ -290,7 +296,7 @@ namespace Grocery_POS.Forms
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label2.Location = new Point(15, 15);
+            label2.Location = new Point(15, 25);
             label2.Name = "label2";
             label2.Size = new Size(50, 25);
             label2.TabIndex = 0;
@@ -300,9 +306,9 @@ namespace Grocery_POS.Forms
             // 
             panelBarcode.BackColor = Color.White;
             panelBarcode.BorderColor = Color.Black;
+            panelBarcode.Controls.Add(label4);
             panelBarcode.Controls.Add(iconPictureBox1);
             panelBarcode.Controls.Add(txtBarcode);
-            panelBarcode.Controls.Add(label4);
             panelBarcode.Location = new Point(12, 12);
             panelBarcode.Name = "panelBarcode";
             panelBarcode.Padding = new Padding(3);
@@ -336,14 +342,16 @@ namespace Grocery_POS.Forms
             txtBarcode.Name = "txtBarcode";
             txtBarcode.PlaceholderColor = Color.DarkGray;
             txtBarcode.PlaceholderText = "Scan barcode...";
-            txtBarcode.Size = new Size(500, 50);
+            txtBarcode.Size = new Size(421, 50);
             txtBarcode.TabIndex = 1;
             txtBarcode.KeyDown += txtBarcode_KeyDown;
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.Black;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label4.ForeColor = Color.Yellow;
             label4.Location = new Point(53, 21);
             label4.Name = "label4";
             label4.Size = new Size(116, 21);
@@ -394,8 +402,8 @@ namespace Grocery_POS.Forms
         private NeoBrutalistButton btnPay;
         private IconPictureBox iconPictureBox1;
         private NeoBrutalistTextBox txtBarcode;
-        private Label label4;
         private NeoBrutalistButton btnAddToCart;
         private NeoBrutalistButton btnCategoryManagement;
+        public Label label4;
     }
 }

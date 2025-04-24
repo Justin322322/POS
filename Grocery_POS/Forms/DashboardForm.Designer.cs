@@ -32,294 +32,288 @@ namespace Grocery_POS.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelMenu = new NeoBrutalistPanel();
-            this.btnLogout = new FontAwesome.Sharp.IconButton();
-            this.btnSettings = new FontAwesome.Sharp.IconButton();
-            this.btnReports = new FontAwesome.Sharp.IconButton();
-            this.btnTransactions = new FontAwesome.Sharp.IconButton();
-            this.btnProducts = new FontAwesome.Sharp.IconButton();
-            this.btnPOS = new FontAwesome.Sharp.IconButton();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.lblUserRole = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelTitleBar = new NeoBrutalistPanel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.panelDesktop = new Grocery_POS.UI.DottedBackgroundPanel();
-            this.panelMenu.SuspendLayout();
-            this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelTitleBar.SuspendLayout();
-            this.SuspendLayout();
-            //
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
+            panelMenu = new NeoBrutalistPanel();
+            btnLogout = new IconButton();
+            btnSettings = new IconButton();
+            btnReports = new IconButton();
+            btnTransactions = new IconButton();
+            btnProducts = new IconButton();
+            btnPOS = new IconButton();
+            panelLogo = new Panel();
+            lblUserRole = new Label();
+            lblUserName = new Label();
+            pictureBox1 = new PictureBox();
+            panelTitleBar = new NeoBrutalistPanel();
+            lblTitle = new Label();
+            panelDesktop = new DottedBackgroundPanel();
+            panelMenu.SuspendLayout();
+            panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelTitleBar.SuspendLayout();
+            SuspendLayout();
+            // 
             // panelMenu
-            //
-            this.panelMenu.BackColor = System.Drawing.Color.White;
-            this.panelMenu.BorderColor = System.Drawing.Color.Black;
-            this.panelMenu.BorderRadius = 0;
-            this.panelMenu.BorderSize = 3;
-            this.panelMenu.Controls.Add(this.btnLogout);
-            this.panelMenu.Controls.Add(this.btnSettings);
-            this.panelMenu.Controls.Add(this.btnReports);
-            this.panelMenu.Controls.Add(this.btnTransactions);
-            this.panelMenu.Controls.Add(this.btnProducts);
-            this.panelMenu.Controls.Add(this.btnPOS);
-            this.panelMenu.Controls.Add(this.panelLogo);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.OffsetX = 5;
-            this.panelMenu.OffsetY = 5;
-            this.panelMenu.Padding = new System.Windows.Forms.Padding(3);
-            this.panelMenu.ShadowColor = System.Drawing.Color.Black;
-            this.panelMenu.ShadowSize = 5;
-            this.panelMenu.Size = new System.Drawing.Size(220, 720);
-            this.panelMenu.TabIndex = 0;
-            //
+            // 
+            panelMenu.BackColor = Color.White;
+            panelMenu.BorderColor = Color.Black;
+            panelMenu.Controls.Add(btnLogout);
+            panelMenu.Controls.Add(btnSettings);
+            panelMenu.Controls.Add(btnReports);
+            panelMenu.Controls.Add(btnTransactions);
+            panelMenu.Controls.Add(btnProducts);
+            panelMenu.Controls.Add(btnPOS);
+            panelMenu.Controls.Add(panelLogo);
+            panelMenu.Dock = DockStyle.Left;
+            panelMenu.Location = new Point(0, 0);
+            panelMenu.Name = "panelMenu";
+            panelMenu.Padding = new Padding(3);
+            panelMenu.ShadowColor = Color.Black;
+            panelMenu.Size = new Size(220, 880);
+            panelMenu.TabIndex = 0;
+            // 
             // btnLogout
-            //
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnLogout.FlatAppearance.BorderSize = 2;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLogout.ForeColor = System.Drawing.Color.Black;
-            this.btnLogout.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
-            this.btnLogout.IconColor = System.Drawing.Color.Black;
-            this.btnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLogout.IconSize = 32;
-            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(3, 670);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnLogout.Size = new System.Drawing.Size(214, 47);
-            this.btnLogout.TabIndex = 6;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            //
+            // 
+            btnLogout.BackColor = Color.FromArgb(255, 204, 0);
+            btnLogout.Dock = DockStyle.Bottom;
+            btnLogout.FlatAppearance.BorderSize = 2;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Segoe UI", 12F);
+            btnLogout.ForeColor = Color.Black;
+            btnLogout.IconChar = IconChar.SignOutAlt;
+            btnLogout.IconColor = Color.Black;
+            btnLogout.IconFont = IconFont.Auto;
+            btnLogout.IconSize = 32;
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(3, 830);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Padding = new Padding(10, 0, 20, 0);
+            btnLogout.Size = new Size(214, 47);
+            btnLogout.TabIndex = 6;
+            btnLogout.Text = "Logout";
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // btnSettings
-            //
-            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSettings.FlatAppearance.BorderSize = 2;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSettings.ForeColor = System.Drawing.Color.Black;
-            this.btnSettings.IconChar = FontAwesome.Sharp.IconChar.Cog;
-            this.btnSettings.IconColor = System.Drawing.Color.Black;
-            this.btnSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSettings.IconSize = 32;
-            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(3, 347);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnSettings.Size = new System.Drawing.Size(214, 60);
-            this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            //
+            // 
+            btnSettings.BackColor = Color.FromArgb(255, 204, 0);
+            btnSettings.Dock = DockStyle.Top;
+            btnSettings.FlatAppearance.BorderSize = 2;
+            btnSettings.FlatStyle = FlatStyle.Flat;
+            btnSettings.Font = new Font("Segoe UI", 12F);
+            btnSettings.ForeColor = Color.Black;
+            btnSettings.IconChar = IconChar.Cog;
+            btnSettings.IconColor = Color.Black;
+            btnSettings.IconFont = IconFont.Auto;
+            btnSettings.IconSize = 32;
+            btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSettings.Location = new Point(3, 347);
+            btnSettings.Name = "btnSettings";
+            btnSettings.Padding = new Padding(10, 0, 20, 0);
+            btnSettings.Size = new Size(214, 60);
+            btnSettings.TabIndex = 5;
+            btnSettings.Text = "Settings";
+            btnSettings.TextAlign = ContentAlignment.MiddleLeft;
+            btnSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSettings.UseVisualStyleBackColor = true;
+            btnSettings.Click += btnSettings_Click;
+            // 
             // btnReports
-            //
-            this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReports.FlatAppearance.BorderSize = 2;
-            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.btnReports.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReports.ForeColor = System.Drawing.Color.Black;
-            this.btnReports.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
-            this.btnReports.IconColor = System.Drawing.Color.Black;
-            this.btnReports.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReports.IconSize = 32;
-            this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(3, 287);
-            this.btnReports.Name = "btnReports";
-            this.btnReports.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnReports.Size = new System.Drawing.Size(214, 60);
-            this.btnReports.TabIndex = 4;
-            this.btnReports.Text = "Reports";
-            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReports.UseVisualStyleBackColor = true;
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
-            //
+            // 
+            btnReports.BackColor = Color.FromArgb(255, 204, 0);
+            btnReports.Dock = DockStyle.Top;
+            btnReports.FlatAppearance.BorderSize = 2;
+            btnReports.FlatStyle = FlatStyle.Flat;
+            btnReports.Font = new Font("Segoe UI", 12F);
+            btnReports.ForeColor = Color.Black;
+            btnReports.IconChar = IconChar.BarChart;
+            btnReports.IconColor = Color.Black;
+            btnReports.IconFont = IconFont.Auto;
+            btnReports.IconSize = 32;
+            btnReports.ImageAlign = ContentAlignment.MiddleLeft;
+            btnReports.Location = new Point(3, 287);
+            btnReports.Name = "btnReports";
+            btnReports.Padding = new Padding(10, 0, 20, 0);
+            btnReports.Size = new Size(214, 60);
+            btnReports.TabIndex = 4;
+            btnReports.Text = "Reports";
+            btnReports.TextAlign = ContentAlignment.MiddleLeft;
+            btnReports.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnReports.UseVisualStyleBackColor = true;
+            btnReports.Click += btnReports_Click;
+            // 
             // btnTransactions
-            //
-            this.btnTransactions.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTransactions.FlatAppearance.BorderSize = 2;
-            this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.btnTransactions.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTransactions.ForeColor = System.Drawing.Color.Black;
-            this.btnTransactions.IconChar = FontAwesome.Sharp.IconChar.FileInvoiceDollar;
-            this.btnTransactions.IconColor = System.Drawing.Color.Black;
-            this.btnTransactions.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnTransactions.IconSize = 32;
-            this.btnTransactions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTransactions.Location = new System.Drawing.Point(3, 227);
-            this.btnTransactions.Name = "btnTransactions";
-            this.btnTransactions.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnTransactions.Size = new System.Drawing.Size(214, 60);
-            this.btnTransactions.TabIndex = 3;
-            this.btnTransactions.Text = "Transactions";
-            this.btnTransactions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTransactions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTransactions.UseVisualStyleBackColor = true;
-            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
-            //
+            // 
+            btnTransactions.BackColor = Color.FromArgb(255, 204, 0);
+            btnTransactions.Dock = DockStyle.Top;
+            btnTransactions.FlatAppearance.BorderSize = 2;
+            btnTransactions.FlatStyle = FlatStyle.Flat;
+            btnTransactions.Font = new Font("Segoe UI", 12F);
+            btnTransactions.ForeColor = Color.Black;
+            btnTransactions.IconChar = IconChar.FileInvoiceDollar;
+            btnTransactions.IconColor = Color.Black;
+            btnTransactions.IconFont = IconFont.Auto;
+            btnTransactions.IconSize = 32;
+            btnTransactions.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTransactions.Location = new Point(3, 227);
+            btnTransactions.Name = "btnTransactions";
+            btnTransactions.Padding = new Padding(10, 0, 20, 0);
+            btnTransactions.Size = new Size(214, 60);
+            btnTransactions.TabIndex = 3;
+            btnTransactions.Text = "Transactions";
+            btnTransactions.TextAlign = ContentAlignment.MiddleLeft;
+            btnTransactions.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnTransactions.UseVisualStyleBackColor = true;
+            btnTransactions.Click += btnTransactions_Click;
+            // 
             // btnProducts
-            //
-            this.btnProducts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProducts.FlatAppearance.BorderSize = 2;
-            this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.btnProducts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnProducts.ForeColor = System.Drawing.Color.Black;
-            this.btnProducts.IconChar = FontAwesome.Sharp.IconChar.BoxOpen;
-            this.btnProducts.IconColor = System.Drawing.Color.Black;
-            this.btnProducts.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnProducts.IconSize = 32;
-            this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProducts.Location = new System.Drawing.Point(3, 167);
-            this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnProducts.Size = new System.Drawing.Size(214, 60);
-            this.btnProducts.TabIndex = 2;
-            this.btnProducts.Text = "Products";
-            this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProducts.UseVisualStyleBackColor = true;
-            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
-            //
+            // 
+            btnProducts.BackColor = Color.FromArgb(255, 204, 0);
+            btnProducts.Dock = DockStyle.Top;
+            btnProducts.FlatAppearance.BorderSize = 2;
+            btnProducts.FlatStyle = FlatStyle.Flat;
+            btnProducts.Font = new Font("Segoe UI", 12F);
+            btnProducts.ForeColor = Color.Black;
+            btnProducts.IconChar = IconChar.BoxOpen;
+            btnProducts.IconColor = Color.Black;
+            btnProducts.IconFont = IconFont.Auto;
+            btnProducts.IconSize = 32;
+            btnProducts.ImageAlign = ContentAlignment.MiddleLeft;
+            btnProducts.Location = new Point(3, 167);
+            btnProducts.Name = "btnProducts";
+            btnProducts.Padding = new Padding(10, 0, 20, 0);
+            btnProducts.Size = new Size(214, 60);
+            btnProducts.TabIndex = 2;
+            btnProducts.Text = "Products";
+            btnProducts.TextAlign = ContentAlignment.MiddleLeft;
+            btnProducts.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnProducts.UseVisualStyleBackColor = true;
+            btnProducts.Click += btnProducts_Click;
+            // 
             // btnPOS
-            //
-            this.btnPOS.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPOS.FlatAppearance.BorderSize = 2;
-            this.btnPOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.btnPOS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPOS.ForeColor = System.Drawing.Color.Black;
-            this.btnPOS.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
-            this.btnPOS.IconColor = System.Drawing.Color.Black;
-            this.btnPOS.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnPOS.IconSize = 32;
-            this.btnPOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPOS.Location = new System.Drawing.Point(3, 107);
-            this.btnPOS.Name = "btnPOS";
-            this.btnPOS.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnPOS.Size = new System.Drawing.Size(214, 60);
-            this.btnPOS.TabIndex = 1;
-            this.btnPOS.Text = "POS";
-            this.btnPOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPOS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPOS.UseVisualStyleBackColor = true;
-            this.btnPOS.Click += new System.EventHandler(this.btnPOS_Click);
-            //
+            // 
+            btnPOS.BackColor = Color.FromArgb(255, 204, 0);
+            btnPOS.Dock = DockStyle.Top;
+            btnPOS.FlatAppearance.BorderSize = 2;
+            btnPOS.FlatStyle = FlatStyle.Flat;
+            btnPOS.Font = new Font("Segoe UI", 12F);
+            btnPOS.ForeColor = Color.Black;
+            btnPOS.IconChar = IconChar.CartShopping;
+            btnPOS.IconColor = Color.Black;
+            btnPOS.IconFont = IconFont.Auto;
+            btnPOS.IconSize = 32;
+            btnPOS.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPOS.Location = new Point(3, 107);
+            btnPOS.Name = "btnPOS";
+            btnPOS.Padding = new Padding(10, 0, 20, 0);
+            btnPOS.Size = new Size(214, 60);
+            btnPOS.TabIndex = 1;
+            btnPOS.Text = "POS";
+            btnPOS.TextAlign = ContentAlignment.MiddleLeft;
+            btnPOS.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnPOS.UseVisualStyleBackColor = true;
+            btnPOS.Click += btnPOS_Click;
+            // 
             // panelLogo
-            //
-            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panelLogo.Controls.Add(this.lblUserRole);
-            this.panelLogo.Controls.Add(this.lblUserName);
-            this.panelLogo.Controls.Add(this.pictureBox1);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(3, 3);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(214, 104);
-            this.panelLogo.TabIndex = 0;
-            //
+            // 
+            panelLogo.BackColor = Color.FromArgb(255, 204, 0);
+            panelLogo.Controls.Add(lblUserRole);
+            panelLogo.Controls.Add(lblUserName);
+            panelLogo.Controls.Add(pictureBox1);
+            panelLogo.Dock = DockStyle.Top;
+            panelLogo.Location = new Point(3, 3);
+            panelLogo.Name = "panelLogo";
+            panelLogo.Size = new Size(214, 104);
+            panelLogo.TabIndex = 0;
+            // 
             // lblUserRole
-            //
-            this.lblUserRole.AutoSize = true;
-            this.lblUserRole.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUserRole.ForeColor = System.Drawing.Color.Black;
-            this.lblUserRole.Location = new System.Drawing.Point(76, 53);
-            this.lblUserRole.Name = "lblUserRole";
-            this.lblUserRole.Size = new System.Drawing.Size(30, 15);
-            this.lblUserRole.TabIndex = 2;
-            this.lblUserRole.Text = "Role";
-            //
+            // 
+            lblUserRole.AutoSize = true;
+            lblUserRole.Font = new Font("Segoe UI", 9F);
+            lblUserRole.ForeColor = Color.Black;
+            lblUserRole.Location = new Point(76, 53);
+            lblUserRole.Name = "lblUserRole";
+            lblUserRole.Size = new Size(30, 15);
+            lblUserRole.TabIndex = 2;
+            lblUserRole.Text = "Role";
+            // 
             // lblUserName
-            //
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblUserName.ForeColor = System.Drawing.Color.Black;
-            this.lblUserName.Location = new System.Drawing.Point(76, 32);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(91, 21);
-            this.lblUserName.TabIndex = 1;
-            this.lblUserName.Text = "User Name";
-            //
+            // 
+            lblUserName.AutoSize = true;
+            lblUserName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblUserName.ForeColor = Color.Black;
+            lblUserName.Location = new Point(76, 32);
+            lblUserName.Name = "lblUserName";
+            lblUserName.Size = new Size(94, 21);
+            lblUserName.TabIndex = 1;
+            lblUserName.Text = "User Name";
+            // 
             // pictureBox1
-            //
-            this.pictureBox1.Image = null;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            //
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(12, 32);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(48, 48);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // panelTitleBar
-            //
-            this.panelTitleBar.BackColor = System.Drawing.Color.White;
-            this.panelTitleBar.BorderColor = System.Drawing.Color.Black;
-            this.panelTitleBar.BorderRadius = 0;
-            this.panelTitleBar.BorderSize = 3;
-            this.panelTitleBar.Controls.Add(this.lblTitle);
-            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(220, 0);
-            this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.OffsetX = 5;
-            this.panelTitleBar.OffsetY = 5;
-            this.panelTitleBar.Padding = new System.Windows.Forms.Padding(3);
-            this.panelTitleBar.ShadowColor = System.Drawing.Color.Black;
-            this.panelTitleBar.ShadowSize = 5;
-            this.panelTitleBar.Size = new System.Drawing.Size(1060, 80);
-            this.panelTitleBar.TabIndex = 1;
-            //
+            // 
+            panelTitleBar.BackColor = Color.White;
+            panelTitleBar.BorderColor = Color.Black;
+            panelTitleBar.Controls.Add(lblTitle);
+            panelTitleBar.Dock = DockStyle.Top;
+            panelTitleBar.Location = new Point(220, 0);
+            panelTitleBar.Name = "panelTitleBar";
+            panelTitleBar.Padding = new Padding(3);
+            panelTitleBar.ShadowColor = Color.Black;
+            panelTitleBar.Size = new Size(1060, 80);
+            panelTitleBar.TabIndex = 1;
+            // 
             // lblTitle
-            //
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.Location = new System.Drawing.Point(22, 23);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(60, 32);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "POS";
-            //
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.BackColor = Color.Black;
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.Yellow;
+            lblTitle.Location = new Point(22, 23);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(60, 32);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "POS";
+            // 
             // panelDesktop
-            //
-            this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(220, 80);
-            this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1060, 640);
-            this.panelDesktop.TabIndex = 2;
-            //
+            // 
+            panelDesktop.BackColor = Color.FromArgb(255, 204, 0);
+            panelDesktop.Dock = DockStyle.Fill;
+            panelDesktop.DotColor = Color.FromArgb(0, 120, 215);
+            panelDesktop.Location = new Point(220, 80);
+            panelDesktop.Name = "panelDesktop";
+            panelDesktop.Size = new Size(1060, 800);
+            panelDesktop.TabIndex = 2;
+            // 
             // DashboardForm
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 880 );
-            this.Controls.Add(this.panelDesktop);
-            this.Controls.Add(this.panelTitleBar);
-            this.Controls.Add(this.panelMenu);
-            this.Name = "DashboardForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Grocery POS - Dashboard";
-            this.Load += new System.EventHandler(this.DashboardForm_Load);
-            this.panelMenu.ResumeLayout(false);
-            this.panelLogo.ResumeLayout(false);
-            this.panelLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelTitleBar.ResumeLayout(false);
-            this.panelTitleBar.PerformLayout();
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1280, 880);
+            Controls.Add(panelDesktop);
+            Controls.Add(panelTitleBar);
+            Controls.Add(panelMenu);
+            Name = "DashboardForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Grocery POS - Dashboard";
+            Load += DashboardForm_Load;
+            panelMenu.ResumeLayout(false);
+            panelLogo.ResumeLayout(false);
+            panelLogo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelTitleBar.ResumeLayout(false);
+            panelTitleBar.PerformLayout();
+            ResumeLayout(false);
 
         }
 
