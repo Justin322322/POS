@@ -213,5 +213,49 @@ namespace Grocery_POS.Forms
         {
             LoadReports();
         }
+
+        private void btnPrintPreview_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime startDate = dtpStartDate.Value.Date;
+                DateTime endDate = dtpEndDate.Value.Date.AddDays(1).AddSeconds(-1); // End of the day
+
+                // Get transactions for the date range
+                var transactions = transactionService.GetTransactionsByDateRange(startDate, endDate);
+
+                if (transactions.Count == 0)
+                {
+                    MessageBox.Show("No transactions found for the selected date range.",
+                        "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Calculate total sales
+                decimal totalSales = transactions.Sum(t => t.TotalAmount);
+
+                // Calculate total transactions
+                int totalTransactions = transactions.Count;
+
+                // Calculate average transaction value
+                decimal avgTransaction = transactions.Count > 0 ? totalSales / transactions.Count : 0;
+
+                // Open the report preview form with all transactions
+                var reportPreviewForm = new ReportPreviewForm(
+                    startDate,
+                    endDate,
+                    totalSales,
+                    totalTransactions,
+                    avgTransaction,
+                    transactions
+                );
+
+                reportPreviewForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error generating report preview: {ex.Message}", "Report Preview Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

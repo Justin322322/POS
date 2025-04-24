@@ -34,6 +34,7 @@ namespace Grocery_POS.Forms
         private void InitializeComponent()
         {
             panelFilter = new NeoBrutalistPanel();
+            btnPrintPreview = new NeoBrutalistButton();
             btnGenerateReport = new NeoBrutalistButton();
             dtpEndDate = new DateTimePicker();
             label3 = new Label();
@@ -68,6 +69,7 @@ namespace Grocery_POS.Forms
             //
             panelFilter.BackColor = Color.White;
             panelFilter.BorderColor = Color.Black;
+            panelFilter.Controls.Add(btnPrintPreview);
             panelFilter.Controls.Add(btnGenerateReport);
             panelFilter.Controls.Add(dtpEndDate);
             panelFilter.Controls.Add(label3);
@@ -80,6 +82,28 @@ namespace Grocery_POS.Forms
             panelFilter.ShadowColor = Color.LightGray;
             panelFilter.Size = new Size(1036, 64);
             panelFilter.TabIndex = 0;
+            //
+            // btnPrintPreview
+            //
+            btnPrintPreview.BackColor = Color.FromArgb(0, 153, 51);
+            btnPrintPreview.BorderColor = Color.Black;
+            btnPrintPreview.FlatAppearance.BorderSize = 0;
+            btnPrintPreview.FlatStyle = FlatStyle.Flat;
+            btnPrintPreview.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnPrintPreview.ForeColor = Color.White;
+            btnPrintPreview.HoverBorderColor = Color.Black;
+            btnPrintPreview.Location = new Point(670, 15);
+            btnPrintPreview.Name = "btnPrintPreview";
+            btnPrintPreview.OffsetX = 3;
+            btnPrintPreview.OffsetY = 3;
+            btnPrintPreview.Padding = new Padding(0, 0, 3, 3);
+            btnPrintPreview.ShadowColor = Color.Black;
+            btnPrintPreview.ShadowSize = 3;
+            btnPrintPreview.Size = new Size(150, 35);
+            btnPrintPreview.TabIndex = 6;
+            btnPrintPreview.Text = "PRINT PREVIEW";
+            btnPrintPreview.UseVisualStyleBackColor = false;
+            btnPrintPreview.Click += btnPrintPreview_Click;
             //
             // btnGenerateReport
             //
@@ -247,7 +271,7 @@ namespace Grocery_POS.Forms
             panelTopProducts.Name = "panelTopProducts";
             panelTopProducts.Padding = new Padding(15);
             panelTopProducts.ShadowColor = Color.Black;
-            panelTopProducts.Size = new Size(500, 220);
+            panelTopProducts.Size = new Size(514, 253);
             panelTopProducts.TabIndex = 2;
             //
             // dgvTopProducts
@@ -255,7 +279,7 @@ namespace Grocery_POS.Forms
             dgvTopProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTopProducts.Location = new Point(15, 50);
             dgvTopProducts.Name = "dgvTopProducts";
-            dgvTopProducts.Size = new Size(470, 160);
+            dgvTopProducts.Size = new Size(481, 185);
             dgvTopProducts.TabIndex = 1;
             //
             // label6
@@ -276,11 +300,11 @@ namespace Grocery_POS.Forms
             panelPaymentMethods.BorderColor = Color.Black;
             panelPaymentMethods.Controls.Add(dgvPaymentMethods);
             panelPaymentMethods.Controls.Add(label8);
-            panelPaymentMethods.Location = new Point(548, 192);
+            panelPaymentMethods.Location = new Point(532, 192);
             panelPaymentMethods.Name = "panelPaymentMethods";
             panelPaymentMethods.Padding = new Padding(15);
             panelPaymentMethods.ShadowColor = Color.Black;
-            panelPaymentMethods.Size = new Size(500, 220);
+            panelPaymentMethods.Size = new Size(516, 253);
             panelPaymentMethods.TabIndex = 3;
             //
             // dgvPaymentMethods
@@ -288,7 +312,7 @@ namespace Grocery_POS.Forms
             dgvPaymentMethods.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPaymentMethods.Location = new Point(15, 50);
             dgvPaymentMethods.Name = "dgvPaymentMethods";
-            dgvPaymentMethods.Size = new Size(470, 160);
+            dgvPaymentMethods.Size = new Size(483, 185);
             dgvPaymentMethods.TabIndex = 1;
             //
             // label8
@@ -308,11 +332,11 @@ namespace Grocery_POS.Forms
             panelChart.BackColor = Color.White;
             panelChart.BorderColor = Color.Black;
             panelChart.Controls.Add(label9);
-            panelChart.Location = new Point(12, 422);
+            panelChart.Location = new Point(12, 451);
             panelChart.Name = "panelChart";
             panelChart.Padding = new Padding(15);
             panelChart.ShadowColor = Color.Black;
-            panelChart.Size = new Size(1036, 210);
+            panelChart.Size = new Size(1036, 296);
             panelChart.TabIndex = 4;
             //
             // label9
@@ -332,7 +356,7 @@ namespace Grocery_POS.Forms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 204, 0);
-            ClientSize = new Size(1060, 640);
+            ClientSize = new Size(1060, 759);
             Controls.Add(panelChart);
             Controls.Add(panelPaymentMethods);
             Controls.Add(panelTopProducts);
@@ -367,6 +391,7 @@ namespace Grocery_POS.Forms
         private DateTimePicker dtpEndDate;
         private Label label3;
         private NeoBrutalistButton btnGenerateReport;
+        private NeoBrutalistButton btnPrintPreview;
         private NeoBrutalistPanel panelSummary;
         private Label label4;
         private Label lblTotalSales;

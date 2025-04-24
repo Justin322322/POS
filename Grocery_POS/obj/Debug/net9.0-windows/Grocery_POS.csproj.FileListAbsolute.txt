@@ -32,6 +32,7 @@ C:\Users\justi\source\repos\Grocery_POS\Grocery_POS\obj\Debug\net9.0-windows\Gro
 C:\Users\justi\source\repos\Grocery_POS\Grocery_POS\obj\Debug\net9.0-windows\Grocery_POS.Forms.POSForm.resources
 C:\Users\justi\source\repos\Grocery_POS\Grocery_POS\obj\Debug\net9.0-windows\Grocery_POS.Forms.ProductManagementForm.resources
 C:\Users\justi\source\repos\Grocery_POS\Grocery_POS\obj\Debug\net9.0-windows\Grocery_POS.Forms.ReceiptPreviewForm.resources
+C:\Users\justi\source\repos\Grocery_POS\Grocery_POS\obj\Debug\net9.0-windows\Grocery_POS.Forms.ReportPreviewForm.resources
 C:\Users\justi\source\repos\Grocery_POS\Grocery_POS\obj\Debug\net9.0-windows\Grocery_POS.Forms.ReportsForm.resources
 C:\Users\justi\source\repos\Grocery_POS\Grocery_POS\obj\Debug\net9.0-windows\Grocery_POS.Forms.SettingsForm.resources
 C:\Users\justi\source\repos\Grocery_POS\Grocery_POS\obj\Debug\net9.0-windows\Grocery_POS.Forms.TransactionHistoryForm.resources
