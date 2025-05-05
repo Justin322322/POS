@@ -43,19 +43,30 @@ namespace Grocery_POS.Forms
         {
             // Configure DataGridView appearance
             dgvProducts.AutoGenerateColumns = false;
+            dgvProducts.AllowUserToAddRows = false;
+            dgvProducts.AllowUserToDeleteRows = false;
+            dgvProducts.AllowUserToResizeRows = false;
+            dgvProducts.MultiSelect = false;
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProducts.ReadOnly = true;
+            dgvProducts.RowHeadersVisible = false;
+            dgvProducts.BackgroundColor = Color.White;
+            dgvProducts.BorderStyle = BorderStyle.None;
+            dgvProducts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 204, 0);
             dgvProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             dgvProducts.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dgvProducts.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
+            dgvProducts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvProducts.ColumnHeadersHeight = 40;
+            dgvProducts.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F);
+            dgvProducts.DefaultCellStyle.BackColor = Color.White;
+            dgvProducts.DefaultCellStyle.ForeColor = Color.Black;
             dgvProducts.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 204, 0);
             dgvProducts.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvProducts.RowTemplate.Height = 30;
-            dgvProducts.RowHeadersVisible = false;
-            dgvProducts.BorderStyle = BorderStyle.None;
-            dgvProducts.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvProducts.BackgroundColor = Color.White;
             dgvProducts.EnableHeadersVisualStyles = false;
-            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
             // Create columns
             if (dgvProducts.Columns.Count == 0)
@@ -63,9 +74,13 @@ namespace Grocery_POS.Forms
                 dgvProducts.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     Name = "Id",
-                    HeaderText = "Id",
+                    HeaderText = "ID",
                     DataPropertyName = "Id",
-                    Width = 50
+                    Width = 50,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Alignment = DataGridViewContentAlignment.MiddleCenter
+                    }
                 });
 
                 dgvProducts.Columns.Add(new DataGridViewTextBoxColumn
@@ -73,7 +88,11 @@ namespace Grocery_POS.Forms
                     Name = "Name",
                     HeaderText = "Name",
                     DataPropertyName = "Name",
-                    Width = 150
+                    Width = 180,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Alignment = DataGridViewContentAlignment.MiddleLeft
+                    }
                 });
 
                 dgvProducts.Columns.Add(new DataGridViewTextBoxColumn
@@ -90,7 +109,11 @@ namespace Grocery_POS.Forms
                     Name = "CategoryName",
                     HeaderText = "Category",
                     DataPropertyName = "CategoryName",
-                    Width = 120
+                    Width = 120,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Alignment = DataGridViewContentAlignment.MiddleLeft
+                    }
                 });
 
                 dgvProducts.Columns.Add(new DataGridViewTextBoxColumn
@@ -98,10 +121,10 @@ namespace Grocery_POS.Forms
                     Name = "Price",
                     HeaderText = "Price",
                     DataPropertyName = "Price",
-                    Width = 80,
+                    Width = 100,
                     DefaultCellStyle = new DataGridViewCellStyle
                     {
-                        Format = "₱0.00",
+                        Format = "₱#,##0.00",
                         Alignment = DataGridViewContentAlignment.MiddleRight
                     }
                 });
@@ -111,7 +134,11 @@ namespace Grocery_POS.Forms
                     Name = "Stock",
                     HeaderText = "Stock",
                     DataPropertyName = "Stock",
-                    Width = 80
+                    Width = 80,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Alignment = DataGridViewContentAlignment.MiddleCenter
+                    }
                 });
 
                 dgvProducts.Columns.Add(new DataGridViewTextBoxColumn
@@ -119,30 +146,36 @@ namespace Grocery_POS.Forms
                     Name = "Barcode",
                     HeaderText = "Barcode",
                     DataPropertyName = "Barcode",
-                    Width = 100
+                    Width = 120,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Alignment = DataGridViewContentAlignment.MiddleLeft
+                    }
                 });
 
                 dgvProducts.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     Name = "CreatedAt",
-                    HeaderText = "CreatedAt",
+                    HeaderText = "Created At",
                     DataPropertyName = "CreatedAt",
-                    Width = 120,
+                    Width = 130,
                     DefaultCellStyle = new DataGridViewCellStyle
                     {
-                        Format = "dd/MM/yyyy HH:mm"
+                        Format = "dd/MM/yyyy HH:mm",
+                        Alignment = DataGridViewContentAlignment.MiddleCenter
                     }
                 });
 
                 dgvProducts.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     Name = "UpdatedAt",
-                    HeaderText = "UpdatedAt",
+                    HeaderText = "Updated At",
                     DataPropertyName = "UpdatedAt",
-                    Width = 120,
+                    Width = 130,
                     DefaultCellStyle = new DataGridViewCellStyle
                     {
-                        Format = "dd/MM/yyyy HH:mm"
+                        Format = "dd/MM/yyyy HH:mm",
+                        Alignment = DataGridViewContentAlignment.MiddleCenter
                     }
                 });
             }
@@ -348,7 +381,26 @@ namespace Grocery_POS.Forms
                 return;
             }
 
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Check if there are transactions using this product
+            int transactionCount = 0;
+            using (var conn = _db.GetConnection())
+            {
+                conn.Open();
+                string countQuery = "SELECT COUNT(*) FROM transaction_items WHERE product_id = @id";
+                using (var countCmd = new MySqlCommand(countQuery, conn))
+                {
+                    countCmd.Parameters.AddWithValue("@id", currentProduct.Id);
+                    transactionCount = Convert.ToInt32(countCmd.ExecuteScalar());
+                }
+            }
+
+            string confirmMessage = "Are you sure you want to delete this product?";
+            if (transactionCount > 0)
+            {
+                confirmMessage = $"This product is referenced in {transactionCount} transaction(s). If you delete it, transaction history will be preserved but the product reference will be removed. Are you sure you want to continue?";
+            }
+
+            DialogResult result = MessageBox.Show(confirmMessage, "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 try
@@ -356,13 +408,18 @@ namespace Grocery_POS.Forms
                     bool success = productService.DeleteProduct(currentProduct.Id);
                     if (success)
                     {
-                        MessageBox.Show("Product deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string message = "Product deleted successfully.";
+                        if (transactionCount > 0)
+                        {
+                            message = $"Product deleted successfully. Transaction history has been preserved.";
+                        }
+                        MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadProducts();
                         ClearFields();
                     }
                     else
                     {
-                        MessageBox.Show("Failed to delete product. The product may be referenced in transactions.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Failed to delete product. An unknown error occurred.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)

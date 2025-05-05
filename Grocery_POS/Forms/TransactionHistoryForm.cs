@@ -52,44 +52,72 @@ namespace Grocery_POS.Forms
             dgvTransactions.BorderStyle = BorderStyle.None;
             dgvTransactions.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvTransactions.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvTransactions.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 122, 204);
-            dgvTransactions.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvTransactions.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            dgvTransactions.ColumnHeadersHeight = 40;
-            dgvTransactions.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-            dgvTransactions.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 0);
-            dgvTransactions.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvTransactions.RowTemplate.Height = 30;
 
-            // Add columns
+            // Improved header styling
+            dgvTransactions.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+            dgvTransactions.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvTransactions.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            dgvTransactions.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvTransactions.ColumnHeadersHeight = 45;
+
+            // Improved cell styling
+            dgvTransactions.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvTransactions.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 204, 0);
+            dgvTransactions.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvTransactions.DefaultCellStyle.Padding = new Padding(5, 0, 5, 0);
+            dgvTransactions.RowTemplate.Height = 35;
+            dgvTransactions.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+
+            // Add columns - simplified and improved
             DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
             idColumn.Name = "Id";
             idColumn.HeaderText = "ID";
             idColumn.DataPropertyName = "Id";
-            idColumn.Width = 50;
+            idColumn.Width = 60;
+            idColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvTransactions.Columns.Add(idColumn);
 
             DataGridViewTextBoxColumn dateColumn = new DataGridViewTextBoxColumn();
             dateColumn.Name = "Date";
-            dateColumn.HeaderText = "Date";
+            dateColumn.HeaderText = "Date & Time";
             dateColumn.DataPropertyName = "TransactionDate";
-            dateColumn.Width = 150;
-            dateColumn.DefaultCellStyle.Format = "g"; // Short date and time
+            dateColumn.Width = 170;
+            dateColumn.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             dgvTransactions.Columns.Add(dateColumn);
 
             DataGridViewTextBoxColumn totalColumn = new DataGridViewTextBoxColumn();
             totalColumn.Name = "Total";
-            totalColumn.HeaderText = "Total";
+            totalColumn.HeaderText = "Total Amount";
             totalColumn.DataPropertyName = "TotalAmount";
-            totalColumn.Width = 100;
-            totalColumn.DefaultCellStyle.Format = "C2";
+            totalColumn.Width = 120;
+            totalColumn.DefaultCellStyle.Format = "₱ #,##0.00";
+            totalColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvTransactions.Columns.Add(totalColumn);
+
+            DataGridViewTextBoxColumn amountPaidColumn = new DataGridViewTextBoxColumn();
+            amountPaidColumn.Name = "AmountPaid";
+            amountPaidColumn.HeaderText = "Amount Paid";
+            amountPaidColumn.DataPropertyName = "AmountPaid";
+            amountPaidColumn.Width = 120;
+            amountPaidColumn.DefaultCellStyle.Format = "₱ #,##0.00";
+            amountPaidColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvTransactions.Columns.Add(amountPaidColumn);
+
+            DataGridViewTextBoxColumn changeColumn = new DataGridViewTextBoxColumn();
+            changeColumn.Name = "Change";
+            changeColumn.HeaderText = "Change";
+            changeColumn.DataPropertyName = "Change";
+            changeColumn.Width = 100;
+            changeColumn.DefaultCellStyle.Format = "₱ #,##0.00";
+            changeColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvTransactions.Columns.Add(changeColumn);
 
             DataGridViewTextBoxColumn paymentMethodColumn = new DataGridViewTextBoxColumn();
             paymentMethodColumn.Name = "PaymentMethod";
             paymentMethodColumn.HeaderText = "Payment Method";
             paymentMethodColumn.DataPropertyName = "PaymentMethod";
             paymentMethodColumn.Width = 120;
+            paymentMethodColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvTransactions.Columns.Add(paymentMethodColumn);
 
             // Configure transaction items DataGridView
@@ -105,36 +133,45 @@ namespace Grocery_POS.Forms
             dgvTransactionItems.BorderStyle = BorderStyle.None;
             dgvTransactionItems.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvTransactionItems.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvTransactionItems.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 122, 204);
-            dgvTransactionItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvTransactionItems.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            dgvTransactionItems.ColumnHeadersHeight = 40;
-            dgvTransactionItems.DefaultCellStyle.Font = new Font("Segoe UI", 10);
-            dgvTransactionItems.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 128, 0);
-            dgvTransactionItems.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvTransactionItems.RowTemplate.Height = 30;
 
-            // Add columns
+            // Improved header styling
+            dgvTransactionItems.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+            dgvTransactionItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvTransactionItems.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            dgvTransactionItems.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvTransactionItems.ColumnHeadersHeight = 40;
+
+            // Improved cell styling
+            dgvTransactionItems.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvTransactionItems.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 204, 0);
+            dgvTransactionItems.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvTransactionItems.DefaultCellStyle.Padding = new Padding(5, 0, 5, 0);
+            dgvTransactionItems.RowTemplate.Height = 35;
+            dgvTransactionItems.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+
+            // Add columns - improved
             DataGridViewTextBoxColumn productIdColumn = new DataGridViewTextBoxColumn();
             productIdColumn.Name = "ProductId";
-            productIdColumn.HeaderText = "Product ID";
+            productIdColumn.HeaderText = "ID";
             productIdColumn.DataPropertyName = "ProductId";
-            productIdColumn.Width = 80;
+            productIdColumn.Width = 50;
+            productIdColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvTransactionItems.Columns.Add(productIdColumn);
 
             DataGridViewTextBoxColumn productNameColumn = new DataGridViewTextBoxColumn();
             productNameColumn.Name = "ProductName";
             productNameColumn.HeaderText = "Product";
             productNameColumn.DataPropertyName = "ProductName";
-            productNameColumn.Width = 200;
+            productNameColumn.Width = 180;
             dgvTransactionItems.Columns.Add(productNameColumn);
 
             DataGridViewTextBoxColumn priceColumn = new DataGridViewTextBoxColumn();
             priceColumn.Name = "Price";
             priceColumn.HeaderText = "Price";
             priceColumn.DataPropertyName = "Price";
-            priceColumn.Width = 100;
-            priceColumn.DefaultCellStyle.Format = "C2";
+            priceColumn.Width = 90;
+            priceColumn.DefaultCellStyle.Format = "₱ #,##0.00";
+            priceColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvTransactionItems.Columns.Add(priceColumn);
 
             DataGridViewTextBoxColumn quantityColumn = new DataGridViewTextBoxColumn();
@@ -142,6 +179,7 @@ namespace Grocery_POS.Forms
             quantityColumn.HeaderText = "Qty";
             quantityColumn.DataPropertyName = "Quantity";
             quantityColumn.Width = 50;
+            quantityColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvTransactionItems.Columns.Add(quantityColumn);
 
             DataGridViewTextBoxColumn subtotalColumn = new DataGridViewTextBoxColumn();
@@ -149,7 +187,8 @@ namespace Grocery_POS.Forms
             subtotalColumn.HeaderText = "Subtotal";
             subtotalColumn.DataPropertyName = "Subtotal";
             subtotalColumn.Width = 100;
-            subtotalColumn.DefaultCellStyle.Format = "C2";
+            subtotalColumn.DefaultCellStyle.Format = "₱ #,##0.00";
+            subtotalColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvTransactionItems.Columns.Add(subtotalColumn);
         }
 
@@ -167,7 +206,7 @@ namespace Grocery_POS.Forms
 
             // Update total sales
             decimal totalSales = transactions.Sum(t => t.TotalAmount);
-            lblTotalSales.Text = totalSales.ToString("C2");
+            lblTotalSales.Text = "₱" + totalSales.ToString("#,##0.00");
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -181,7 +220,7 @@ namespace Grocery_POS.Forms
             {
                 int transactionId = Convert.ToInt32(dgvTransactions.Rows[e.RowIndex].Cells["Id"].Value);
                 selectedTransaction = transactionService.GetTransactionById(transactionId);
-                
+
                 if (selectedTransaction != null)
                 {
                     dgvTransactionItems.DataSource = selectedTransaction.Items;

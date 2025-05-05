@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SRLp2eW2OGY=",
+  "dgSpecHash": "C+cy3H8SlG8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\justi\\source\\repos\\Grocery_POS\\Grocery_POS\\Grocery_POS.csproj",
+  "projectFilePath": "C:\\Users\\justi\\source\\repos\\NW2B-Group3-GroceryPOS\\Grocery_POS\\Grocery_POS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\justi\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\justi\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512",

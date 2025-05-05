@@ -270,7 +270,7 @@ namespace Grocery_POS.Forms
             panelTitleBar.Name = "panelTitleBar";
             panelTitleBar.Padding = new Padding(3);
             panelTitleBar.ShadowColor = Color.Black;
-            panelTitleBar.Size = new Size(1060, 80);
+            panelTitleBar.Size = new Size(1199, 80);
             panelTitleBar.TabIndex = 1;
             // 
             // lblTitle
@@ -292,14 +292,14 @@ namespace Grocery_POS.Forms
             panelDesktop.DotColor = Color.FromArgb(0, 120, 215);
             panelDesktop.Location = new Point(220, 80);
             panelDesktop.Name = "panelDesktop";
-            panelDesktop.Size = new Size(1060, 800);
+            panelDesktop.Size = new Size(1199, 800);
             panelDesktop.TabIndex = 2;
             // 
             // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1280, 880);
+            ClientSize = new Size(1419, 880);
             Controls.Add(panelDesktop);
             Controls.Add(panelTitleBar);
             Controls.Add(panelMenu);

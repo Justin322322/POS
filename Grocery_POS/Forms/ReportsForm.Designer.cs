@@ -64,9 +64,9 @@ namespace Grocery_POS.Forms
             ((System.ComponentModel.ISupportInitialize)dgvPaymentMethods).BeginInit();
             panelChart.SuspendLayout();
             SuspendLayout();
-            //
+            // 
             // panelFilter
-            //
+            // 
             panelFilter.BackColor = Color.White;
             panelFilter.BorderColor = Color.Black;
             panelFilter.Controls.Add(btnPrintPreview);
@@ -76,15 +76,15 @@ namespace Grocery_POS.Forms
             panelFilter.Controls.Add(dtpStartDate);
             panelFilter.Controls.Add(label2);
             panelFilter.Controls.Add(label1);
-            panelFilter.Location = new Point(12, 12);
+            panelFilter.Location = new Point(83, 12);
             panelFilter.Name = "panelFilter";
             panelFilter.Padding = new Padding(10);
             panelFilter.ShadowColor = Color.LightGray;
             panelFilter.Size = new Size(1036, 64);
             panelFilter.TabIndex = 0;
-            //
+            // 
             // btnPrintPreview
-            //
+            // 
             btnPrintPreview.BackColor = Color.FromArgb(0, 153, 51);
             btnPrintPreview.BorderColor = Color.Black;
             btnPrintPreview.FlatAppearance.BorderSize = 0;
@@ -104,9 +104,9 @@ namespace Grocery_POS.Forms
             btnPrintPreview.Text = "PRINT PREVIEW";
             btnPrintPreview.UseVisualStyleBackColor = false;
             btnPrintPreview.Click += btnPrintPreview_Click;
-            //
+            // 
             // btnGenerateReport
-            //
+            // 
             btnGenerateReport.BackColor = Color.FromArgb(0, 122, 204);
             btnGenerateReport.BorderColor = Color.Black;
             btnGenerateReport.FlatAppearance.BorderSize = 0;
@@ -126,18 +126,18 @@ namespace Grocery_POS.Forms
             btnGenerateReport.Text = "GENERATE REPORT";
             btnGenerateReport.UseVisualStyleBackColor = false;
             btnGenerateReport.Click += btnGenerateReport_Click;
-            //
+            // 
             // dtpEndDate
-            //
+            // 
             dtpEndDate.Font = new Font("Segoe UI", 9.75F);
             dtpEndDate.Format = DateTimePickerFormat.Short;
             dtpEndDate.Location = new Point(370, 20);
             dtpEndDate.Name = "dtpEndDate";
             dtpEndDate.Size = new Size(120, 25);
             dtpEndDate.TabIndex = 4;
-            //
+            // 
             // label3
-            //
+            // 
             label3.AutoSize = true;
             label3.BackColor = Color.LightGray;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
@@ -146,18 +146,18 @@ namespace Grocery_POS.Forms
             label3.Size = new Size(64, 17);
             label3.TabIndex = 3;
             label3.Text = "End Date";
-            //
+            // 
             // dtpStartDate
-            //
+            // 
             dtpStartDate.Font = new Font("Segoe UI", 9.75F);
             dtpStartDate.Format = DateTimePickerFormat.Short;
             dtpStartDate.Location = new Point(170, 20);
             dtpStartDate.Name = "dtpStartDate";
             dtpStartDate.Size = new Size(120, 25);
             dtpStartDate.TabIndex = 2;
-            //
+            // 
             // label2
-            //
+            // 
             label2.AutoSize = true;
             label2.BackColor = Color.LightGray;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
@@ -166,9 +166,9 @@ namespace Grocery_POS.Forms
             label2.Size = new Size(70, 17);
             label2.TabIndex = 1;
             label2.Text = "Start Date";
-            //
+            // 
             // label1
-            //
+            // 
             label1.AutoSize = true;
             label1.BackColor = Color.LightGray;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -177,9 +177,9 @@ namespace Grocery_POS.Forms
             label1.Size = new Size(76, 21);
             label1.TabIndex = 0;
             label1.Text = "Filter by:";
-            //
+            // 
             // panelSummary
-            //
+            // 
             panelSummary.BackColor = Color.White;
             panelSummary.BorderColor = Color.Black;
             panelSummary.Controls.Add(lblAvgTransaction);
@@ -188,15 +188,15 @@ namespace Grocery_POS.Forms
             panelSummary.Controls.Add(label5);
             panelSummary.Controls.Add(lblTotalSales);
             panelSummary.Controls.Add(label4);
-            panelSummary.Location = new Point(12, 82);
+            panelSummary.Location = new Point(83, 82);
             panelSummary.Name = "panelSummary";
             panelSummary.Padding = new Padding(15);
             panelSummary.ShadowColor = Color.LightGray;
             panelSummary.Size = new Size(1036, 100);
             panelSummary.TabIndex = 1;
-            //
+            // 
             // lblAvgTransaction
-            //
+            // 
             lblAvgTransaction.AutoSize = true;
             lblAvgTransaction.BackColor = Color.LightGray;
             lblAvgTransaction.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -205,9 +205,9 @@ namespace Grocery_POS.Forms
             lblAvgTransaction.Size = new Size(93, 40);
             lblAvgTransaction.TabIndex = 5;
             lblAvgTransaction.Text = "$0.00";
-            //
+            // 
             // label7
-            //
+            // 
             label7.AutoSize = true;
             label7.BackColor = Color.LightGray;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -216,9 +216,9 @@ namespace Grocery_POS.Forms
             label7.Size = new Size(165, 21);
             label7.TabIndex = 4;
             label7.Text = "Average Transaction";
-            //
+            // 
             // lblTotalTransactions
-            //
+            // 
             lblTotalTransactions.AutoSize = true;
             lblTotalTransactions.BackColor = Color.LightGray;
             lblTotalTransactions.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold);
@@ -227,9 +227,9 @@ namespace Grocery_POS.Forms
             lblTotalTransactions.Size = new Size(34, 40);
             lblTotalTransactions.TabIndex = 3;
             lblTotalTransactions.Text = "0";
-            //
+            // 
             // label5
-            //
+            // 
             label5.AutoSize = true;
             label5.BackColor = Color.LightGray;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -238,9 +238,9 @@ namespace Grocery_POS.Forms
             label5.Size = new Size(147, 21);
             label5.TabIndex = 2;
             label5.Text = "Total Transactions";
-            //
+            // 
             // lblTotalSales
-            //
+            // 
             lblTotalSales.AutoSize = true;
             lblTotalSales.BackColor = Color.LightGray;
             lblTotalSales.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold);
@@ -249,9 +249,9 @@ namespace Grocery_POS.Forms
             lblTotalSales.Size = new Size(93, 40);
             lblTotalSales.TabIndex = 1;
             lblTotalSales.Text = "$0.00";
-            //
+            // 
             // label4
-            //
+            // 
             label4.AutoSize = true;
             label4.BackColor = Color.LightGray;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -260,30 +260,30 @@ namespace Grocery_POS.Forms
             label4.Size = new Size(91, 21);
             label4.TabIndex = 0;
             label4.Text = "Total Sales";
-            //
+            // 
             // panelTopProducts
-            //
+            // 
             panelTopProducts.BackColor = Color.White;
             panelTopProducts.BorderColor = Color.Black;
             panelTopProducts.Controls.Add(dgvTopProducts);
             panelTopProducts.Controls.Add(label6);
-            panelTopProducts.Location = new Point(12, 192);
+            panelTopProducts.Location = new Point(83, 192);
             panelTopProducts.Name = "panelTopProducts";
             panelTopProducts.Padding = new Padding(15);
             panelTopProducts.ShadowColor = Color.Black;
             panelTopProducts.Size = new Size(514, 253);
             panelTopProducts.TabIndex = 2;
-            //
+            // 
             // dgvTopProducts
-            //
+            // 
             dgvTopProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTopProducts.Location = new Point(15, 50);
             dgvTopProducts.Name = "dgvTopProducts";
             dgvTopProducts.Size = new Size(481, 185);
             dgvTopProducts.TabIndex = 1;
-            //
+            // 
             // label6
-            //
+            // 
             label6.AutoSize = true;
             label6.BackColor = Color.Black;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -293,30 +293,30 @@ namespace Grocery_POS.Forms
             label6.Size = new Size(109, 21);
             label6.TabIndex = 0;
             label6.Text = "Top Products";
-            //
+            // 
             // panelPaymentMethods
-            //
+            // 
             panelPaymentMethods.BackColor = Color.White;
             panelPaymentMethods.BorderColor = Color.Black;
             panelPaymentMethods.Controls.Add(dgvPaymentMethods);
             panelPaymentMethods.Controls.Add(label8);
-            panelPaymentMethods.Location = new Point(532, 192);
+            panelPaymentMethods.Location = new Point(603, 192);
             panelPaymentMethods.Name = "panelPaymentMethods";
             panelPaymentMethods.Padding = new Padding(15);
             panelPaymentMethods.ShadowColor = Color.Black;
             panelPaymentMethods.Size = new Size(516, 253);
             panelPaymentMethods.TabIndex = 3;
-            //
+            // 
             // dgvPaymentMethods
-            //
+            // 
             dgvPaymentMethods.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPaymentMethods.Location = new Point(15, 50);
             dgvPaymentMethods.Name = "dgvPaymentMethods";
             dgvPaymentMethods.Size = new Size(483, 185);
             dgvPaymentMethods.TabIndex = 1;
-            //
+            // 
             // label8
-            //
+            // 
             label8.AutoSize = true;
             label8.BackColor = Color.Black;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -326,21 +326,21 @@ namespace Grocery_POS.Forms
             label8.Size = new Size(149, 21);
             label8.TabIndex = 0;
             label8.Text = "Payment Methods";
-            //
+            // 
             // panelChart
-            //
+            // 
             panelChart.BackColor = Color.White;
             panelChart.BorderColor = Color.Black;
             panelChart.Controls.Add(label9);
-            panelChart.Location = new Point(12, 451);
+            panelChart.Location = new Point(83, 451);
             panelChart.Name = "panelChart";
             panelChart.Padding = new Padding(15);
             panelChart.ShadowColor = Color.Black;
             panelChart.Size = new Size(1036, 296);
             panelChart.TabIndex = 4;
-            //
+            // 
             // label9
-            //
+            // 
             label9.AutoSize = true;
             label9.BackColor = Color.Black;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -350,13 +350,13 @@ namespace Grocery_POS.Forms
             label9.Size = new Size(93, 21);
             label9.TabIndex = 0;
             label9.Text = "Daily Sales";
-            //
+            // 
             // ReportsForm
-            //
+            // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 204, 0);
-            ClientSize = new Size(1060, 759);
+            ClientSize = new Size(1279, 759);
             Controls.Add(panelChart);
             Controls.Add(panelPaymentMethods);
             Controls.Add(panelTopProducts);

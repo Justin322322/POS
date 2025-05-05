@@ -146,25 +146,29 @@ namespace Grocery_POS.Services
                 using (MySqlConnection conn = dbConnection.GetConnection())
                 {
                     conn.Open();
-                    // First check if there are any products using this category
+                    // Check if there are any products using this category (for informational purposes only)
                     string checkQuery = "SELECT COUNT(*) FROM products WHERE category_id = @id";
+                    int productCount = 0;
                     using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
                     {
                         checkCmd.Parameters.AddWithValue("@id", id);
-                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
-                        if (count > 0)
-                        {
-                            // Category is in use, cannot delete
-                            return false;
-                        }
+                        productCount = Convert.ToInt32(checkCmd.ExecuteScalar());
                     }
 
-                    // If no products are using this category, proceed with deletion
+                    // Proceed with deletion - the ON DELETE SET NULL constraint will set product category_id to NULL
                     string deleteQuery = "DELETE FROM categories WHERE id = @id";
                     using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn))
                     {
                         deleteCmd.Parameters.AddWithValue("@id", id);
-                        return deleteCmd.ExecuteNonQuery() > 0;
+                        int result = deleteCmd.ExecuteNonQuery();
+
+                        if (result > 0 && productCount > 0)
+                        {
+                            // Log that products were updated
+                            Console.WriteLine($"Deleted category ID {id}. {productCount} products had their category set to NULL.");
+                        }
+
+                        return result > 0;
                     }
                 }
             }

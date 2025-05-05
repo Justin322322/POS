@@ -236,11 +236,30 @@ namespace Grocery_POS.Services
                 using (MySqlConnection conn = dbConnection.GetConnection())
                 {
                     conn.Open();
-                    string query = "DELETE FROM products WHERE id = @id";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+
+                    // Check if this product is referenced in any transactions (for informational purposes only)
+                    string checkQuery = "SELECT COUNT(*) FROM transaction_items WHERE product_id = @id";
+                    int transactionCount = 0;
+                    using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
                     {
-                        cmd.Parameters.AddWithValue("@id", id);
-                        return cmd.ExecuteNonQuery() > 0;
+                        checkCmd.Parameters.AddWithValue("@id", id);
+                        transactionCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+                    }
+
+                    // Proceed with deletion - the ON DELETE SET NULL constraint will set transaction_items.product_id to NULL
+                    string deleteQuery = "DELETE FROM products WHERE id = @id";
+                    using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn))
+                    {
+                        deleteCmd.Parameters.AddWithValue("@id", id);
+                        int rowsAffected = deleteCmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0 && transactionCount > 0)
+                        {
+                            // Log that transaction items were updated
+                            Console.WriteLine($"Deleted product ID {id}. {transactionCount} transaction items had their product_id set to NULL.");
+                        }
+
+                        return rowsAffected > 0;
                     }
                 }
             }

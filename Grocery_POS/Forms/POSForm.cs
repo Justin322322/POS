@@ -343,9 +343,11 @@ namespace Grocery_POS.Forms
                             UpdateTotalAmount();
 
                             // Reload products in the background to avoid UI freeze
-                            Task.Run(() => {
+                            Task.Run(() =>
+                            {
                                 // Use Invoke to update UI from background thread
-                                this.Invoke((MethodInvoker)delegate {
+                                this.Invoke((MethodInvoker)delegate
+                                {
                                     LoadProducts(); // Reload products to update stock
                                     txtBarcode.Clear();
                                     txtBarcode.Focus();
@@ -490,6 +492,11 @@ namespace Grocery_POS.Forms
                 RefreshCart();
                 UpdateTotalAmount();
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

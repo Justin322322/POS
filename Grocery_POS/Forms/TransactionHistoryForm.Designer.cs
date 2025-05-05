@@ -31,10 +31,10 @@ namespace Grocery_POS.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panelTransactions = new NeoBrutalistPanel();
             dgvTransactions = new DataGridView();
             panelFilter = new NeoBrutalistPanel();
@@ -68,40 +68,43 @@ namespace Grocery_POS.Forms
             panelTransactions.Name = "panelTransactions";
             panelTransactions.Padding = new Padding(10);
             panelTransactions.ShadowColor = Color.Black;
-            panelTransactions.Size = new Size(650, 587);
+            panelTransactions.ShadowSize = 3;
+            panelTransactions.Size = new Size(796, 587);
             panelTransactions.TabIndex = 0;
             // 
             // dgvTransactions
             // 
             dgvTransactions.AllowUserToAddRows = false;
             dgvTransactions.AllowUserToDeleteRows = false;
-            dgvTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTransactions.BackgroundColor = Color.White;
             dgvTransactions.BorderStyle = BorderStyle.None;
             dgvTransactions.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvTransactions.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = Color.FromArgb(255, 204, 0);
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            dgvTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            dgvTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = SystemColors.Window;
-            dataGridViewCellStyle14.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(255, 204, 0);
-            dataGridViewCellStyle14.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
-            dgvTransactions.DefaultCellStyle = dataGridViewCellStyle14;
-            dgvTransactions.Location = new Point(15, 20);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(50, 50, 50);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(50, 50, 50);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvTransactions.ColumnHeadersHeight = 45;
+            dgvTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new Padding(5, 0, 5, 0);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 204, 0);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvTransactions.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvTransactions.EnableHeadersVisualStyles = false;
+            dgvTransactions.Location = new Point(13, 20);
             dgvTransactions.Name = "dgvTransactions";
             dgvTransactions.RowHeadersVisible = false;
-            dgvTransactions.RowTemplate.Height = 30;
-            dgvTransactions.Size = new Size(620, 554);
+            dgvTransactions.RowTemplate.Height = 35;
+            dgvTransactions.Size = new Size(770, 554);
             dgvTransactions.TabIndex = 0;
             dgvTransactions.CellClick += dgvTransactions_CellClick;
             // 
@@ -119,12 +122,13 @@ namespace Grocery_POS.Forms
             panelFilter.Name = "panelFilter";
             panelFilter.Padding = new Padding(10);
             panelFilter.ShadowColor = Color.Black;
-            panelFilter.Size = new Size(650, 64);
+            panelFilter.ShadowSize = 3;
+            panelFilter.Size = new Size(796, 64);
             panelFilter.TabIndex = 1;
             // 
             // btnFilter
             // 
-            btnFilter.BackColor = Color.FromArgb(0, 122, 204);
+            btnFilter.BackColor = Color.FromArgb(50, 50, 50);
             btnFilter.BorderColor = Color.Black;
             btnFilter.FlatAppearance.BorderSize = 0;
             btnFilter.FlatStyle = FlatStyle.Flat;
@@ -204,44 +208,47 @@ namespace Grocery_POS.Forms
             panelTransactionItems.BorderColor = Color.Black;
             panelTransactionItems.Controls.Add(dgvTransactionItems);
             panelTransactionItems.Controls.Add(label4);
-            panelTransactionItems.Location = new Point(674, 236);
+            panelTransactionItems.Location = new Point(819, 140);
             panelTransactionItems.Name = "panelTransactionItems";
             panelTransactionItems.Padding = new Padding(10);
             panelTransactionItems.ShadowColor = Color.Black;
-            panelTransactionItems.Size = new Size(374, 491);
+            panelTransactionItems.ShadowSize = 3;
+            panelTransactionItems.Size = new Size(373, 587);
             panelTransactionItems.TabIndex = 2;
             // 
             // dgvTransactionItems
             // 
             dgvTransactionItems.AllowUserToAddRows = false;
             dgvTransactionItems.AllowUserToDeleteRows = false;
-            dgvTransactionItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTransactionItems.BackgroundColor = Color.White;
             dgvTransactionItems.BorderStyle = BorderStyle.None;
             dgvTransactionItems.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvTransactionItems.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = Color.FromArgb(255, 204, 0);
-            dataGridViewCellStyle15.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
-            dgvTransactionItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            dgvTransactionItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = SystemColors.Window;
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle16.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(255, 204, 0);
-            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.False;
-            dgvTransactionItems.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(50, 50, 50);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(50, 50, 50);
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvTransactionItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvTransactionItems.ColumnHeadersHeight = 40;
+            dgvTransactionItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.Padding = new Padding(5, 0, 5, 0);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(255, 204, 0);
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvTransactionItems.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvTransactionItems.EnableHeadersVisualStyles = false;
             dgvTransactionItems.Location = new Point(13, 43);
             dgvTransactionItems.Name = "dgvTransactionItems";
             dgvTransactionItems.RowHeadersVisible = false;
-            dgvTransactionItems.RowTemplate.Height = 30;
-            dgvTransactionItems.Size = new Size(355, 435);
+            dgvTransactionItems.RowTemplate.Height = 35;
+            dgvTransactionItems.Size = new Size(347, 530);
             dgvTransactionItems.TabIndex = 1;
             // 
             // label4
@@ -260,32 +267,35 @@ namespace Grocery_POS.Forms
             panelSummary.BorderColor = Color.Black;
             panelSummary.Controls.Add(lblTotalSales);
             panelSummary.Controls.Add(label5);
-            panelSummary.Location = new Point(674, 70);
+            panelSummary.Location = new Point(819, 70);
             panelSummary.Name = "panelSummary";
             panelSummary.Padding = new Padding(15);
-            panelSummary.ShadowColor = Color.White;
-            panelSummary.Size = new Size(374, 150);
+            panelSummary.ShadowColor = Color.Black;
+            panelSummary.ShadowSize = 3;
+            panelSummary.Size = new Size(373, 64);
             panelSummary.TabIndex = 3;
             // 
             // lblTotalSales
             // 
             lblTotalSales.AutoSize = true;
-            lblTotalSales.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblTotalSales.Location = new Point(15, 50);
+            lblTotalSales.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTotalSales.ForeColor = Color.FromArgb(50, 50, 50);
+            lblTotalSales.Location = new Point(120, 15);
             lblTotalSales.Name = "lblTotalSales";
-            lblTotalSales.Size = new Size(101, 45);
+            lblTotalSales.Size = new Size(89, 37);
             lblTotalSales.TabIndex = 1;
-            lblTotalSales.Text = "$0.00";
+            lblTotalSales.Text = "₱0.00";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label5.ForeColor = Color.FromArgb(50, 50, 50);
             label5.Location = new Point(15, 15);
             label5.Name = "label5";
-            label5.Size = new Size(122, 30);
+            label5.Size = new Size(128, 30);
             label5.TabIndex = 0;
-            label5.Text = "Total Sales";
+            label5.Text = "Total Sales:";
             // 
             // lblTitle
             // 
@@ -299,7 +309,7 @@ namespace Grocery_POS.Forms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 204, 0);
-            ClientSize = new Size(1060, 784);
+            ClientSize = new Size(1211, 784);
             Controls.Add(panelSummary);
             Controls.Add(panelTransactionItems);
             Controls.Add(panelFilter);

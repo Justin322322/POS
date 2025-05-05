@@ -95,7 +95,7 @@ namespace Grocery_POS.Services
                             barcode VARCHAR(50),
                             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                            FOREIGN KEY (category_id) REFERENCES categories(id)
+                            FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
                         );";
                     using (MySqlCommand cmd = new MySqlCommand(createProductsTable, conn))
                     {
@@ -146,7 +146,7 @@ namespace Grocery_POS.Services
                             quantity INT NOT NULL,
                             subtotal DECIMAL(10,2) NOT NULL,
                             FOREIGN KEY (transaction_id) REFERENCES transactions(id),
-                            FOREIGN KEY (product_id) REFERENCES products(id)
+                            FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL
                         );";
                     using (MySqlCommand cmd = new MySqlCommand(createTransactionItemsTable, conn))
                     {
@@ -301,6 +301,55 @@ namespace Grocery_POS.Services
                     using (MySqlCommand cmd = new MySqlCommand(insertSampleProducts, conn))
                     {
                         cmd.ExecuteNonQuery();
+                    }
+
+                    // Update foreign key constraints to use ON DELETE SET NULL
+                    try
+                    {
+                        // First drop existing foreign keys
+                        string dropProductsForeignKey = @"
+                            ALTER TABLE products
+                            DROP FOREIGN KEY products_ibfk_1;";
+                        using (MySqlCommand cmd = new MySqlCommand(dropProductsForeignKey, conn))
+                        {
+                            try { cmd.ExecuteNonQuery(); } catch { /* Ignore if constraint doesn't exist */ }
+                        }
+
+                        string dropTransactionItemsForeignKey = @"
+                            ALTER TABLE transaction_items
+                            DROP FOREIGN KEY transaction_items_ibfk_2;";
+                        using (MySqlCommand cmd = new MySqlCommand(dropTransactionItemsForeignKey, conn))
+                        {
+                            try { cmd.ExecuteNonQuery(); } catch { /* Ignore if constraint doesn't exist */ }
+                        }
+
+                        // Then recreate them with ON DELETE SET NULL
+                        string addProductsForeignKey = @"
+                            ALTER TABLE products
+                            ADD CONSTRAINT products_ibfk_1
+                            FOREIGN KEY (category_id)
+                            REFERENCES categories(id)
+                            ON DELETE SET NULL;";
+                        using (MySqlCommand cmd = new MySqlCommand(addProductsForeignKey, conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        string addTransactionItemsForeignKey = @"
+                            ALTER TABLE transaction_items
+                            ADD CONSTRAINT transaction_items_ibfk_2
+                            FOREIGN KEY (product_id)
+                            REFERENCES products(id)
+                            ON DELETE SET NULL;";
+                        using (MySqlCommand cmd = new MySqlCommand(addTransactionItemsForeignKey, conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Warning: Could not update foreign key constraints: {ex.Message}");
+                        // Continue anyway, as this is not critical
                     }
 
                     return true;

@@ -9,12 +9,14 @@ namespace Grocery_POS.Forms
     public partial class CategoryManagementForm : Form
     {
         private readonly DatabaseConnection _db;
+        private readonly CategoryService categoryService;
         private int? selectedCategoryId;
 
         public CategoryManagementForm()
         {
             InitializeComponent();
             _db = DatabaseConnection.Instance;
+            categoryService = new CategoryService();
             LoadCategories();
         }
 
@@ -117,26 +119,48 @@ namespace Grocery_POS.Forms
                 return;
             }
 
-            if (MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            // Check if there are products using this category
+            int productCount = 0;
+            using (var conn = _db.GetConnection())
+            {
+                conn.Open();
+                string checkQuery = "SELECT COUNT(*) FROM products WHERE category_id = @id";
+                using (var cmd = new MySqlCommand(checkQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", selectedCategoryId.Value);
+                    productCount = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+
+            string confirmMessage = "Are you sure you want to delete this category?";
+            if (productCount > 0)
+            {
+                confirmMessage = $"This category is used by {productCount} product(s). If you delete it, these products will have no category. Are you sure you want to continue?";
+            }
+
+            if (MessageBox.Show(confirmMessage, "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 return;
             }
 
             try
             {
-                using (var conn = _db.GetConnection())
+                bool success = categoryService.DeleteCategory(selectedCategoryId.Value);
+                if (success)
                 {
-                    conn.Open();
-                    string query = "DELETE FROM categories WHERE id = @id";
-                    using (var cmd = new MySqlCommand(query, conn))
+                    string message = "Category deleted successfully!";
+                    if (productCount > 0)
                     {
-                        cmd.Parameters.AddWithValue("@id", selectedCategoryId.Value);
-                        cmd.ExecuteNonQuery();
+                        message = $"Category deleted successfully! {productCount} product(s) now have no category.";
                     }
+                    MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadCategories();
+                    ClearInputs();
                 }
-                MessageBox.Show("Category deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadCategories();
-                ClearInputs();
+                else
+                {
+                    MessageBox.Show("Failed to delete category.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -172,4 +196,4 @@ namespace Grocery_POS.Forms
             LoadCategories();
         }
     }
-} 
+}
